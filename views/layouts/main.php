@@ -46,14 +46,16 @@ AppAsset::register($this);
     			</div>
                 <?php if (!Yii::$app->user->isGuest): ?>
     			<div class="navbar-collapse" id="collapsable-links">
-    				<ul class="hidden-sm nav navbar-nav navbar-links">
+    				<!--<ul class="hidden-sm nav navbar-nav navbar-links">-->
+                    <ul class="hidden-sm nav navbar-nav navbar-links">
     					<li class="active"><a href="#">Materiales</a></li>
     					<li><a href="#">Tutorías</a></li>
                         <li><a href="#">Entregas</a></li>
                         <li><a href="#">Examenes</a></li>
                         <li><a href="#">Calificaciones</a></li>
     				</ul>
-                    <div id="menu-sm" class="btn-group hidden-lg hidden-md hidden-xs">
+                    <!--<div id="menu-sm" class="btn-group hidden-lg hidden-md hidden-xs">-->
+                    <div id="menu-sm" class="btn-group">
                         <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
                            Home
                           <span class="caret"></span>
@@ -103,7 +105,8 @@ AppAsset::register($this);
         <?php endif ?>
 	</nav>
 
-    <div class="container">
+    <div class="container"  ng-app="EVA">
+        <div id="alert-place" ng-hide="hideAlert"></div>
         <?= $content ?>
     </div>
     <!--</div>-->

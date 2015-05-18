@@ -150,23 +150,40 @@ nav.navbar {
 	color: #B6B6C6;
 	text-align: center;
 }
+/*********************** GENERAL ***************************/
+
+.container h1, .container h2,
+.container h3, .container h4,
+.container h5, .container h6 {
+	color: #1A1A4C
+}
+
+
 /************************** FORMS *****************************/
 
-form label, form button{
-	color: #1A1A4C !important;
+.form-group label,
+.form-group .btn{
+	color: #1A1A4C;
+}
+
+.form-group .btn{
+	background: #EBEBF5;
+	border-color: #1A1A4C;
+}
+
+.form-group .btn:hover {
+	background: #B6B6C6;
 }
 
 .form-control {
 	border-color: #B6B6C6;
+	border-color: #1A1A4C;
 }
 
-form input:focus {
-	border-color: #5F5F82 !important;
-}
-
-form input:focus,
 .form-control:focus {
     border-color: #5F5F82;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(95, 95, 130, 0.6);
     outline: 0 none;
 }
+
+/***********************************************************************/

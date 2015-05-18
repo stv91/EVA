@@ -42,6 +42,7 @@ a.navbar-brand img:first-child {
 }
 #menu-sm {
 	width: 143px;
+	display: none;
 }
 
 #menu-sm>a,
@@ -146,4 +147,30 @@ body > .container {
 		display: block;
 		width:initial;
 	}
+}
+
+@media (min-width: 767px) and (max-width: 1035px) {
+	#menu-sm {
+		display: inline-block;
+	}
+	
+	#collapsable-links>ul {
+		display: none;
+	}
+}
+
+/*********************************************************************/
+
+#alert-place {
+	position: fixed;
+	top:80px;
+	right: 15px;
+	left: 15px;
+	z-index: 10;
+}
+
+/*********************************************************************/
+#login-title {
+	margin-top: 40px;
+	margin-bottom: 20px;
 }

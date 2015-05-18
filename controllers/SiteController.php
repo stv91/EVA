@@ -6,6 +6,7 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
+use  yii\helpers\Url;
 use yii\web\Response;
 use app\models\LoginForm;
 use app\models\ContactForm;
@@ -53,7 +54,7 @@ class SiteController extends Controller
             return $this->render('index');
     }
 
-    public function actionLogin()
+    /*public function actionLogin()
     {
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
@@ -66,6 +67,29 @@ class SiteController extends Controller
             return $this->render('login', [
                 'model' => $model,
             ]);
+        }
+    }*/
+    public function actionLogin()
+    {
+        if (!\Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
+        $model = new LoginForm();
+        
+        if(Yii::$app->request->getIsPost()){
+            Yii::$app->response->format = 'json';
+            if ($model->load(Yii::$app->request->post())) {
+                if($model->login())
+                    return ["url" => Url::previous()];
+                else
+                    return $model->getErrors();
+            }
+            else
+                return [];
+        }
+        else {
+            return $this->render('login', ['model' => $model]);
         }
     }
 
@@ -81,7 +105,6 @@ class SiteController extends Controller
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
-
             return $this->refresh();
         } else {
             return $this->render('contact', [

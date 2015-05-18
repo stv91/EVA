@@ -6897,3 +6897,326 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1431511494.89
     'REQUEST_TIME' => 1431511494
 ]
+2015-05-16 16:45:18 [127.0.0.1][][-][error][ReflectionException] exception 'ReflectionException' with message 'Class https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js does not exist' in C:\xampp\htdocs\eva\vendor\yiisoft\yii2\di\Container.php:408
+Stack trace:
+#0 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\di\Container.php(408): ReflectionClass->__construct('https://ajax.go...')
+#1 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\di\Container.php(354): yii\di\Container->getDependencies('https://ajax.go...')
+#2 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\di\Container.php(147): yii\di\Container->build('https://ajax.go...', Array, Array)
+#3 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('https://ajax.go...', Array, Array)
+#4 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\web\AssetManager.php(210): yii\BaseYii::createObject(Array)
+#5 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\web\AssetManager.php(192): yii\web\AssetManager->loadBundle('https://ajax.go...', Array, true)
+#6 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\web\View.php(284): yii\web\AssetManager->getBundle('https://ajax.go...')
+#7 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\web\View.php(289): yii\web\View->registerAssetBundle('https://ajax.go...', NULL)
+#8 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\web\AssetBundle.php(118): yii\web\View->registerAssetBundle('app\\assets\\AppA...')
+#9 C:\xampp\htdocs\eva\views\layouts\main.php(11): yii\web\AssetBundle::register(Object(yii\web\View))
+#10 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\View.php(325): require('C:\\xampp\\htdocs...')
+#11 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#12 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\Controller.php(370): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\SiteController))
+#13 C:\xampp\htdocs\eva\controllers\SiteController.php(68): yii\base\Controller->render('login', Array)
+#14 [internal function]: app\controllers\SiteController->actionLogin()
+#15 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#16 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#17 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('login', Array)
+#18 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('site/login', Array)
+#19 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#20 C:\xampp\htdocs\eva\web\index.php(12): yii\base\Application->run()
+#21 {main}
+2015-05-16 16:45:18 [127.0.0.1][][-][info][application] $_GET = [
+    'LoginForm' => [
+        'email' => 'eff9@alu.ua.es'
+        'password' => ''
+    ]
+]
+
+$_COOKIE = [
+    'mov' => 'n'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'eva.ua.es'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:38.0) Gecko/20100101 Firefox/38.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://eva.ua.es/login.html'
+    'HTTP_COOKIE' => 'mov=n'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => 'C:\\Program Files (x86)\\RSA SecurID Token Common;D:\\oracle\\oracle\\product\\12.1.0\\dbhome_1\\bin;D:\\OracleDB\\oracle\\product\\12.1.0\\dbhome_1\\bin;C:\\Users\\Esteve\\Documents\\product\\12.1.0\\dbhome_1\\bin;D:\\app\\Esteve\\product\\12.1.0\\dbhome_3\\bin;D:\\app\\Esteve\\product\\12.1.0\\dbhome_1\\bin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\AMD APP\\bin\\x86_64;C:\\Program Files (x86)\\AMD APP\\bin\\x86;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\TortoiseSVN\\bin;C:\\Program Files (x86)\\Windows Kits\\8.1\\Windows Performance Toolkit\\;C:\\Program Files\\Microsoft SQL Server\\110\\Tools\\Binn\\;C:\\MinGW\\bin;C:\\MinGW\\libexec\\gcc\\mingw32\\4.8.1;C:\\Program Files\\nodejs\\;C:\\Program Files\\Java\\jdk1.8.0_05\\bin;C:\\apache-ant-1.9.4\\bin;C:\\Android-ADT\\sdk\\platform-tools;C:\\Android-ADT\\sdk\\tools;C:\\apache-maven-3.2.3\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\Microsoft SDKs\\TypeScript\\1.0\\;C:\\Program Files\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\110\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\120\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\Tools\\Binn\\ManagementStudio\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\DTS\\Binn\\;C:\\Program Files (x86)\\CMake\\bin;C:\\Users\\Esteve\\AppData\\Roaming\\npm;C:\\sqldeveloper\\sqldeveloper;C:\\Users\\Esteve\\AppData\\Local\\Code\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11 Server at eva.ua.es Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11'
+    'SERVER_NAME' => 'eva.ua.es'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs/eva/web'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs/eva/web'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/eva/web/index.php'
+    'REMOTE_PORT' => '52734'
+    'REDIRECT_QUERY_STRING' => 'LoginForm%5Bemail%5D=eff9%40alu.ua.es&LoginForm%5Bpassword%5D='
+    'REDIRECT_URL' => '/login.html'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'LoginForm%5Bemail%5D=eff9%40alu.ua.es&LoginForm%5Bpassword%5D='
+    'REQUEST_URI' => '/login.html?LoginForm%5Bemail%5D=eff9%40alu.ua.es&LoginForm%5Bpassword%5D='
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1431787518.035
+    'REQUEST_TIME' => 1431787518
+]
+2015-05-16 16:47:03 [127.0.0.1][][-][error][ReflectionException] exception 'ReflectionException' with message 'Class http://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js does not exist' in C:\xampp\htdocs\eva\vendor\yiisoft\yii2\di\Container.php:408
+Stack trace:
+#0 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\di\Container.php(408): ReflectionClass->__construct('http://ajax.goo...')
+#1 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\di\Container.php(354): yii\di\Container->getDependencies('http://ajax.goo...')
+#2 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\di\Container.php(147): yii\di\Container->build('http://ajax.goo...', Array, Array)
+#3 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('http://ajax.goo...', Array, Array)
+#4 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\web\AssetManager.php(210): yii\BaseYii::createObject(Array)
+#5 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\web\AssetManager.php(192): yii\web\AssetManager->loadBundle('http://ajax.goo...', Array, true)
+#6 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\web\View.php(284): yii\web\AssetManager->getBundle('http://ajax.goo...')
+#7 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\web\View.php(289): yii\web\View->registerAssetBundle('http://ajax.goo...', NULL)
+#8 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\web\AssetBundle.php(118): yii\web\View->registerAssetBundle('app\\assets\\AppA...')
+#9 C:\xampp\htdocs\eva\views\layouts\main.php(11): yii\web\AssetBundle::register(Object(yii\web\View))
+#10 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\View.php(325): require('C:\\xampp\\htdocs...')
+#11 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#12 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\Controller.php(370): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\SiteController))
+#13 C:\xampp\htdocs\eva\controllers\SiteController.php(68): yii\base\Controller->render('login', Array)
+#14 [internal function]: app\controllers\SiteController->actionLogin()
+#15 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#16 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#17 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('login', Array)
+#18 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('site/login', Array)
+#19 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#20 C:\xampp\htdocs\eva\web\index.php(12): yii\base\Application->run()
+#21 {main}
+2015-05-16 16:47:03 [127.0.0.1][][-][info][application] $_GET = [
+    'LoginForm' => [
+        'email' => 'eff9@alu.ua.es'
+        'password' => ''
+    ]
+]
+
+$_COOKIE = [
+    'mov' => 'n'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'eva.ua.es'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:38.0) Gecko/20100101 Firefox/38.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://eva.ua.es/login.html'
+    'HTTP_COOKIE' => 'mov=n'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => 'C:\\Program Files (x86)\\RSA SecurID Token Common;D:\\oracle\\oracle\\product\\12.1.0\\dbhome_1\\bin;D:\\OracleDB\\oracle\\product\\12.1.0\\dbhome_1\\bin;C:\\Users\\Esteve\\Documents\\product\\12.1.0\\dbhome_1\\bin;D:\\app\\Esteve\\product\\12.1.0\\dbhome_3\\bin;D:\\app\\Esteve\\product\\12.1.0\\dbhome_1\\bin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\AMD APP\\bin\\x86_64;C:\\Program Files (x86)\\AMD APP\\bin\\x86;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\TortoiseSVN\\bin;C:\\Program Files (x86)\\Windows Kits\\8.1\\Windows Performance Toolkit\\;C:\\Program Files\\Microsoft SQL Server\\110\\Tools\\Binn\\;C:\\MinGW\\bin;C:\\MinGW\\libexec\\gcc\\mingw32\\4.8.1;C:\\Program Files\\nodejs\\;C:\\Program Files\\Java\\jdk1.8.0_05\\bin;C:\\apache-ant-1.9.4\\bin;C:\\Android-ADT\\sdk\\platform-tools;C:\\Android-ADT\\sdk\\tools;C:\\apache-maven-3.2.3\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\Microsoft SDKs\\TypeScript\\1.0\\;C:\\Program Files\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\110\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\120\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\Tools\\Binn\\ManagementStudio\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\DTS\\Binn\\;C:\\Program Files (x86)\\CMake\\bin;C:\\Users\\Esteve\\AppData\\Roaming\\npm;C:\\sqldeveloper\\sqldeveloper;C:\\Users\\Esteve\\AppData\\Local\\Code\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11 Server at eva.ua.es Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11'
+    'SERVER_NAME' => 'eva.ua.es'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs/eva/web'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs/eva/web'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/eva/web/index.php'
+    'REMOTE_PORT' => '52762'
+    'REDIRECT_QUERY_STRING' => 'LoginForm%5Bemail%5D=eff9%40alu.ua.es&LoginForm%5Bpassword%5D='
+    'REDIRECT_URL' => '/login.html'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'LoginForm%5Bemail%5D=eff9%40alu.ua.es&LoginForm%5Bpassword%5D='
+    'REQUEST_URI' => '/login.html?LoginForm%5Bemail%5D=eff9%40alu.ua.es&LoginForm%5Bpassword%5D='
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1431787623.316
+    'REQUEST_TIME' => 1431787623
+]
+2015-05-16 16:47:30 [127.0.0.1][][-][error][ReflectionException] exception 'ReflectionException' with message 'Class https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js does not exist' in C:\xampp\htdocs\eva\vendor\yiisoft\yii2\di\Container.php:408
+Stack trace:
+#0 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\di\Container.php(408): ReflectionClass->__construct('https://ajax.go...')
+#1 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\di\Container.php(354): yii\di\Container->getDependencies('https://ajax.go...')
+#2 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\di\Container.php(147): yii\di\Container->build('https://ajax.go...', Array, Array)
+#3 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('https://ajax.go...', Array, Array)
+#4 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\web\AssetManager.php(210): yii\BaseYii::createObject(Array)
+#5 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\web\AssetManager.php(192): yii\web\AssetManager->loadBundle('https://ajax.go...', Array, true)
+#6 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\web\View.php(284): yii\web\AssetManager->getBundle('https://ajax.go...')
+#7 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\web\View.php(289): yii\web\View->registerAssetBundle('https://ajax.go...', NULL)
+#8 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\web\AssetBundle.php(118): yii\web\View->registerAssetBundle('app\\assets\\AppA...')
+#9 C:\xampp\htdocs\eva\views\layouts\main.php(11): yii\web\AssetBundle::register(Object(yii\web\View))
+#10 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\View.php(325): require('C:\\xampp\\htdocs...')
+#11 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#12 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\Controller.php(370): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\SiteController))
+#13 C:\xampp\htdocs\eva\controllers\SiteController.php(68): yii\base\Controller->render('login', Array)
+#14 [internal function]: app\controllers\SiteController->actionLogin()
+#15 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#16 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#17 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('login', Array)
+#18 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('site/login', Array)
+#19 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#20 C:\xampp\htdocs\eva\web\index.php(12): yii\base\Application->run()
+#21 {main}
+2015-05-16 16:47:30 [127.0.0.1][][-][info][application] $_COOKIE = [
+    'mov' => 'n'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'eva.ua.es'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:38.0) Gecko/20100101 Firefox/38.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => 'mov=n'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => 'C:\\Program Files (x86)\\RSA SecurID Token Common;D:\\oracle\\oracle\\product\\12.1.0\\dbhome_1\\bin;D:\\OracleDB\\oracle\\product\\12.1.0\\dbhome_1\\bin;C:\\Users\\Esteve\\Documents\\product\\12.1.0\\dbhome_1\\bin;D:\\app\\Esteve\\product\\12.1.0\\dbhome_3\\bin;D:\\app\\Esteve\\product\\12.1.0\\dbhome_1\\bin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\AMD APP\\bin\\x86_64;C:\\Program Files (x86)\\AMD APP\\bin\\x86;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\TortoiseSVN\\bin;C:\\Program Files (x86)\\Windows Kits\\8.1\\Windows Performance Toolkit\\;C:\\Program Files\\Microsoft SQL Server\\110\\Tools\\Binn\\;C:\\MinGW\\bin;C:\\MinGW\\libexec\\gcc\\mingw32\\4.8.1;C:\\Program Files\\nodejs\\;C:\\Program Files\\Java\\jdk1.8.0_05\\bin;C:\\apache-ant-1.9.4\\bin;C:\\Android-ADT\\sdk\\platform-tools;C:\\Android-ADT\\sdk\\tools;C:\\apache-maven-3.2.3\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\Microsoft SDKs\\TypeScript\\1.0\\;C:\\Program Files\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\110\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\120\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\Tools\\Binn\\ManagementStudio\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\DTS\\Binn\\;C:\\Program Files (x86)\\CMake\\bin;C:\\Users\\Esteve\\AppData\\Roaming\\npm;C:\\sqldeveloper\\sqldeveloper;C:\\Users\\Esteve\\AppData\\Local\\Code\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11 Server at eva.ua.es Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11'
+    'SERVER_NAME' => 'eva.ua.es'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs/eva/web'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs/eva/web'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/eva/web/index.php'
+    'REMOTE_PORT' => '52770'
+    'REDIRECT_URL' => '/login.html'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/login.html'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1431787650.233
+    'REQUEST_TIME' => 1431787650
+]
+2015-05-18 12:01:30 [127.0.0.1][][-][error][yii\base\UnknownMethodException] exception 'yii\base\UnknownMethodException' with message 'Calling unknown method: yii\web\Request::isPost()' in C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\Component.php:282
+Stack trace:
+#0 C:\xampp\htdocs\eva\controllers\SiteController.php(80): yii\base\Component->__call('isPost', Array)
+#1 C:\xampp\htdocs\eva\controllers\SiteController.php(80): yii\web\Request->isPost()
+#2 [internal function]: app\controllers\SiteController->actionLogin()
+#3 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#4 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('login', Array)
+#6 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('site/login', Array)
+#7 C:\xampp\htdocs\eva\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#8 C:\xampp\htdocs\eva\web\index.php(12): yii\base\Application->run()
+#9 {main}
+2015-05-18 12:01:30 [127.0.0.1][][-][info][application] $_COOKIE = [
+    'mov' => 'n'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'eva.ua.es'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:38.0) Gecko/20100101 Firefox/38.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => 'mov=n'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => 'C:\\Program Files (x86)\\RSA SecurID Token Common;D:\\oracle\\oracle\\product\\12.1.0\\dbhome_1\\bin;D:\\OracleDB\\oracle\\product\\12.1.0\\dbhome_1\\bin;C:\\Users\\Esteve\\Documents\\product\\12.1.0\\dbhome_1\\bin;D:\\app\\Esteve\\product\\12.1.0\\dbhome_3\\bin;D:\\app\\Esteve\\product\\12.1.0\\dbhome_1\\bin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\AMD APP\\bin\\x86_64;C:\\Program Files (x86)\\AMD APP\\bin\\x86;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\TortoiseSVN\\bin;C:\\Program Files (x86)\\Windows Kits\\8.1\\Windows Performance Toolkit\\;C:\\Program Files\\Microsoft SQL Server\\110\\Tools\\Binn\\;C:\\MinGW\\bin;C:\\MinGW\\libexec\\gcc\\mingw32\\4.8.1;C:\\Program Files\\nodejs\\;C:\\Program Files\\Java\\jdk1.8.0_05\\bin;C:\\apache-ant-1.9.4\\bin;C:\\Android-ADT\\sdk\\platform-tools;C:\\Android-ADT\\sdk\\tools;C:\\apache-maven-3.2.3\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\Microsoft SDKs\\TypeScript\\1.0\\;C:\\Program Files\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\110\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\120\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\Tools\\Binn\\ManagementStudio\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\DTS\\Binn\\;C:\\Program Files (x86)\\CMake\\bin;C:\\Users\\Esteve\\AppData\\Roaming\\npm;C:\\sqldeveloper\\sqldeveloper;C:\\Users\\Esteve\\AppData\\Local\\Code\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11 Server at eva.ua.es Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11'
+    'SERVER_NAME' => 'eva.ua.es'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs/eva/web'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs/eva/web'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/eva/web/index.php'
+    'REMOTE_PORT' => '62568'
+    'REDIRECT_URL' => '/login.html'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/login.html'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1431943290.865
+    'REQUEST_TIME' => 1431943290
+]
