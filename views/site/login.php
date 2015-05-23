@@ -20,8 +20,7 @@
 	  </div>
 	  <div class="form-group">
 	  	<div class="col-sm-offset-4 col-sm-4 col-xs-12">
-	      	<button type="submit" class="btn btn-default btn-lg col-xs-12" 
-		  	data-placement="top" data-container="body" data-duration="3" bs-alert="alert" dismissable="false" container="#alert-place">
+			<button id="submit-btn" type="submit" class="btn btn-default btn-lg col-xs-12">
 		  		Login
 			</button>
 	    </div>
