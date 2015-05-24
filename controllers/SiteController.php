@@ -71,6 +71,7 @@ class SiteController extends Controller
     }*/
     public function actionLogin()
     {
+        Yii::$app->params['current_page'] = "login";
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -100,7 +101,7 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
-    public function actionContact()
+   /* public function actionContact()
     {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
@@ -117,6 +118,29 @@ class SiteController extends Controller
         Yii::$app->response->format = Response::FORMAT_JSON;
         //return User::getUserByEmail("david.montoya@ua.es");
         return User::findIdentityByAccessToken("ffd43ca32e27a35598e8e8bea9dfce37c501c54bf53ad2887ecfa0873b1d0a98");
+    }*/
+    public function actionMaterials(){
+        Yii::$app->params['current_page'] = "materials";
+        return $this->render('materials');
     }
-
+    
+    public function actionMessages(){
+        Yii::$app->params['current_page'] = "messages";
+        return $this->render('messages');
+    }
+    
+    public function actionExams(){
+        Yii::$app->params['current_page'] = "exams";
+        return $this->render('exams');
+    }
+    
+    public function actionDeadlines(){
+        Yii::$app->params['current_page'] = "deadlines";
+        return $this->render('deadlines');
+    }
+    
+    public function actionNotes(){
+        Yii::$app->params['current_page'] = "notes";
+        return $this->render('notes');
+    }
 }

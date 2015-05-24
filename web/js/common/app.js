@@ -1,0 +1,1 @@
+var app = angular.module('EVA', ['ngSanitize', 'mgcrea.ngStrap']);

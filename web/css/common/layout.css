@@ -142,10 +142,10 @@ body > .container {
 	}
 	
 	a.navbar-brand {
-		padding:10px;
-		padding-left: 15px;
+		padding:10px 0 10px 15px; 
 		display: block;
 		width:initial;
+		margin-right: 0;
 	}
 }
 
@@ -170,7 +170,3 @@ body > .container {
 }
 
 /*********************************************************************/
-#login-title {
-	margin-top: 40px;
-	margin-bottom: 20px;
-}

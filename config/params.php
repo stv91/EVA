@@ -1,3 +1,3 @@
 <?php
 
-return [];
+return ['current_page' => 'index'];

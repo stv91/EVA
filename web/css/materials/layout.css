@@ -1,0 +1,8 @@
+#show-search, #show-upload {
+	border-radius:  0 0 4px 4px;
+	background: #B6B6C6;
+}
+
+#materilas-modals .modal-content {
+	background-color: rgba(182, 182, 198, 0.8) !important;
+}
