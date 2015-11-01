@@ -6,16 +6,18 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use  yii\helpers\Url;
+use yii\helpers\Url;
 use yii\web\Response;
 use app\models\LoginForm;
-use app\models\ContactForm;
 use app\models\User;
+use app\models\Material;
+use app\models\MaterialComment;
+use app\models\Subject;
+use yii\web\UploadedFile;
 
-class SiteController extends Controller
-{
-    public function behaviors()
-    {
+class SiteController extends Controller {
+    
+    public function behaviors() {
         return [
             'access' => [
                 'class' => AccessControl::className(),
@@ -37,8 +39,7 @@ class SiteController extends Controller
         ];
     }
 
-    public function actions()
-    {
+    public function actions() {
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
@@ -46,12 +47,20 @@ class SiteController extends Controller
         ];
     }
 
-    public function actionIndex()
-    {
+    public function actionIndex() {
+        Yii::$app->params['current_page'] = "index";
         if(Yii::$app->user->isGuest) 
             return $this->redirect(['login']);
-        else
+        else {
+            if(Yii::$app->request->getIsPost()){
+                $degree = Yii::$app->request->post()["degree"];
+                if($degree){
+                    Yii::$app->session["currentDegree"] = $degree;
+                    return $this->render('index');
+                }
+            }
             return $this->render('index');
+        }
     }
 
     /*public function actionLogin()
@@ -69,8 +78,7 @@ class SiteController extends Controller
             ]);
         }
     }*/
-    public function actionLogin()
-    {
+    public function actionLogin() {
         Yii::$app->params['current_page'] = "login";
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
@@ -94,8 +102,7 @@ class SiteController extends Controller
         }
     }
 
-    public function actionLogout()
-    {
+    public function actionLogout() {
         Yii::$app->user->logout();
 
         return $this->goHome();
@@ -112,35 +119,163 @@ class SiteController extends Controller
                 'model' => $model,
             ]);
         }
-    }
-    
-    public function actionPrueba(){
-        Yii::$app->response->format = Response::FORMAT_JSON;
-        //return User::getUserByEmail("david.montoya@ua.es");
-        return User::findIdentityByAccessToken("ffd43ca32e27a35598e8e8bea9dfce37c501c54bf53ad2887ecfa0873b1d0a98");
     }*/
-    public function actionMaterials(){
+
+    public function actionMaterials() {
         Yii::$app->params['current_page'] = "materials";
         return $this->render('materials');
     }
     
-    public function actionMessages(){
+    public function actionSearch_materials() {
+        Yii::$app->params['current_page'] = "materials";
+
+        $toSearch = json_decode(file_get_contents("php://input"));
+        $degree = Yii::$app->session["currentDegree"];
+        $search = Material::searchMaterial($toSearch->text, $toSearch->oficials, $toSearch->noOficials, $toSearch->course, $toSearch->subject, $degree);
+        
+        $result = array();
+        foreach ($search as $key => $value) {
+            $subject = Subject::getSubjectByCode($value['subject'])["name"];
+
+            list($ano, $mes, $dia) = split("-", split(" ", $value["timestamp"])[0]);
+            $data = array(
+                'id' => $value["id"],
+                'name' => $value["original_name"],
+                'date' => "$dia/$mes/$ano",
+                'type' => $value["type"]
+            );
+            
+            if(isset($result[$subject])){
+                array_push($result[$subject], $data);
+            }
+            else {
+                $result[$subject] = array($data);
+            }
+        }
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return  $result;
+        
+    }
+
+    public function actionMessages() {
         Yii::$app->params['current_page'] = "messages";
         return $this->render('messages');
     }
     
-    public function actionExams(){
+    public function actionExams() {
         Yii::$app->params['current_page'] = "exams";
         return $this->render('exams');
     }
     
-    public function actionDeadlines(){
+    public function actionDeadlines() {
         Yii::$app->params['current_page'] = "deadlines";
         return $this->render('deadlines');
     }
     
-    public function actionNotes(){
+    public function actionNotes() {
         Yii::$app->params['current_page'] = "notes";
         return $this->render('notes');
+    }
+
+    public function actionUploadmaterial(){
+        if(Yii::$app->user->isGuest || !Yii::$app->request->getIsPost()) 
+            return $this->redirect(['login']);
+
+        $subject = Yii::$app->request->post('subject');
+        $file = $_FILES['materialFile'];
+        $material = new Material();
+        $material->setData($subject, $file);
+
+        if($material->addMaterial()) {
+            $this->redirect(array('materials', 'm'=> $material->id));
+        }
+        else {
+            $message = "No se ha podido guardar el archivo.";
+            if(!empty($material->getErrors())) {
+                $message = array_values($material->getErrors())[0][0];
+            }
+            return $this->render('error', ['message' =>  $message, 'name' => "Error subiendo el material"]);
+        }
+    }
+
+    public function actionDeletematerial($id) {
+        if(!Yii::$app->user->isGuest) {
+            $material = $material = Material::find()->where(['id' => $id])->one();
+            if($material->deleteMaterial(Yii::$app->user->identity->code)){
+                return "OK";
+            }
+            else {
+                return "ERROR";
+            }
+        }
+        else {
+            return "ERROR";
+        }
+    }
+
+    public function actionGetsubjects() {
+        $reuslt = "";
+        if(!Yii::$app->user->isGuest) {
+            $degree = Yii::$app->session["currentDegree"];
+            $user = Yii::$app->user->identity->code;
+            $isTeacher = Yii::$app->user->identity->isTeacher;
+            $result = Subject::getSubjectsByUser($degree, $user, $isTeacher);
+        }
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return  $result;
+    }
+
+    public function actionGetmaterial($id) {
+        if(!Yii::$app->user->isGuest) {
+            //$id = Yii::$app->request->get("id");
+
+            $material  = Material::getMaterialByID($id);
+
+            if(Yii::$app->user->identity->checkSubject($material["subject"])) {
+                Yii::$app->response->format = Response::FORMAT_JSON;
+                return  $material;
+            }
+        }
+    }
+
+    public function actionGetcurrentuser() {
+        if(!Yii::$app->user->isGuest) {
+            $code = Yii::$app->user->identity->code;
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return  $code;
+        }
+    }
+
+    public function actionSavedescription() {
+        if(!Yii::$app->user->isGuest) {
+            $data = json_decode(file_get_contents("php://input"));
+            $material = Material::find()->where(['id' => $data->id])->one();
+            $material->description = $data->desc;
+            $material->save();
+        }
+    }
+
+    public function actionSavecomment() {
+        if(!Yii::$app->user->isGuest) {
+            $data = json_decode(file_get_contents("php://input"));
+            $comment = new MaterialComment();
+            $comment->user = Yii::$app->user->identity->code;
+            $comment->is_teacher = Yii::$app->user->identity->isTeacher;
+            $comment->content = $data->content;
+            $comment->material = $data->id;
+            if($data->reply != null) {
+                $comment->reply = $data->reply;
+            }
+            $comment->save();
+        }
+    }
+
+    public function actionGetcomments($id) {
+        if(!Yii::$app->user->isGuest) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return  MaterialComment::getComments($id);
+        }
     }
 }

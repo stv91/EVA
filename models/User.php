@@ -14,6 +14,7 @@ class User implements \yii\web\IdentityInterface{
     public $password;
     public $authKey;
     public $accessToken;
+    public $degrees;
     
     public static function findIdentity($id)
     {
@@ -89,6 +90,29 @@ class User implements \yii\web\IdentityInterface{
                 $user->authKey = $result["authKey"];
                 $user->accessToken = $result["accessToken"];
             }
+
+            $sql = "select degree from tuition where student = $user->code";
+            if($user->isTeacher == 1){
+                $sql =    "select distinct ds.degree from subject_course_teacher sct, degree_subject ds
+                             where ds.subject = sct.subject and teacher = $user->code;";
+            }
+
+            $result = Yii::$app->db->createCommand($sql)->queryAll();
+            
+            if(is_array($result)){
+                for ($i = 0; $i < count($result); $i++) {
+                    $query->select("name")
+                        ->from("degree")
+                        ->where("code = '".$result[$i]["degree"]."'");
+                    $aux = $query->one();
+                    $result[$i]["name"] = $aux["name"];
+                }
+                $user->degrees = $result;
+                if(!Yii::$app->session["currentDegree"]){
+                    Yii::$app->session["currentDegree"] =  $result[0]["degree"];    
+                }
+                
+            }
         }
         
         return $user;
@@ -97,6 +121,15 @@ class User implements \yii\web\IdentityInterface{
     public function validatePassword($pass){
         return ($this->password == md5($pass));
     }
-     
+
+    public function checkSubject($subject) {
+        $query =    "select * from enrollment where student = '$this->code' and subject = '$subject'";
+        if($this->isTeacher == 1) {
+            $query = "select * from subject_course_teacher where teacher = $this->code and subject = '$subject';";
+        }
+        $result = Yii::$app->db->createCommand($query)->queryAll();
+
+        return count($result) > 0;
+    }
 }
 

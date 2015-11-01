@@ -47,42 +47,45 @@ AppAsset::register($this);
 				<!--<ul class="hidden-sm nav navbar-nav navbar-links">-->
                 <ul class="hidden-sm nav navbar-nav navbar-links">
 					<li <?php if(Yii::$app->params['current_page'] == 'materials') echo "class=\"active\"" ?>>
-                        <a href="materials.html">Materiales</a>
+                        <a href="materials.html"><?=  Yii::$app->params['pages']['materials']; ?></a>
                     </li>
 					<li <?php if(Yii::$app->params['current_page'] == 'messages') echo "class=\"active\"" ?>>
-                        <a href="messages.html">Tutorías</a>
+                        <a href="messages.html"><?=  Yii::$app->params['pages']['messages']; ?></a>
                     </li>
                     <li <?php if(Yii::$app->params['current_page'] == 'deadlines') echo "class=\"active\"" ?>>
-                        <a href="deadlines.html">Entregas</a>
+                        <a href="deadlines.html"><?=  Yii::$app->params['pages']['deadlines']; ?></a>
                     </li>
                     <li <?php if(Yii::$app->params['current_page'] == 'exams') echo "class=\"active\"" ?>>
-                        <a href="exams.html">Examenes</a>
+                        <a href="exams.html"><?=  Yii::$app->params['pages']['exams']; ?></a>
                     </li>
                     <li <?php if(Yii::$app->params['current_page'] == 'notes') echo "class=\"active\"" ?>>
-                        <a href="notes.html">Calificaciones</a>
+                        <a href="notes.html"><?=  Yii::$app->params['pages']['notes']; ?></a>
                     </li>
 				</ul>
                 <!--<div id="menu-sm" class="btn-group hidden-lg hidden-md hidden-xs">-->
                 <div id="menu-sm" class="btn-group">
                     <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                       Home
+                      <?=  Yii::$app->params['pages'][Yii::$app->params['current_page']]; ?>
                       <span class="caret"></span>
                     </a>
                     <ul class="nav dropdown-menu">
+                        <li <?php if(Yii::$app->params['current_page'] == 'index') echo "class=\"active\"" ?>>
+                            <a href="/"><?=  Yii::$app->params['pages']['index']; ?></a>
+                        </li>
     					<li <?php if(Yii::$app->params['current_page'] == 'materials') echo "class=\"active\"" ?>>
-                        <a href="materials.html">Materiales</a>
+                            <a href="materials.html"><?=  Yii::$app->params['pages']['materials']; ?></a>
                         </li>
     					<li <?php if(Yii::$app->params['current_page'] == 'messages') echo "class=\"active\"" ?>>
-                            <a href="messages.html">Tutorías</a>
+                            <a href="messages.html"><?=  Yii::$app->params['pages']['messages']; ?></a>
                         </li>
                         <li <?php if(Yii::$app->params['current_page'] == 'deadlines') echo "class=\"active\"" ?>>
-                            <a href="deadlines.html">Entregas</a>
+                            <a href="deadlines.html"><?=  Yii::$app->params['pages']['deadlines']; ?></a>
                         </li>
                         <li <?php if(Yii::$app->params['current_page'] == 'exams') echo "class=\"active\"" ?>>
-                            <a href="exams.html">Examenes</a>
+                            <a href="exams.html"><?=  Yii::$app->params['pages']['exams']; ?></a>
                         </li>
                         <li <?php if(Yii::$app->params['current_page'] == 'notes') echo "class=\"active\"" ?>>
-                            <a href="notes.html">Calificaciones</a>
+                            <a href="notes.html"><?=  Yii::$app->params['pages']['notes']; ?></a>
                         </li>
     				</ul>
                 </div>
@@ -96,10 +99,19 @@ AppAsset::register($this);
                         
                     </button>
                     <ul id="user-opcions-dd" class="dropdown-menu" role="menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
+                        <?php
+                        if(count(Yii::$app->user->identity->degrees) > 1) {
+                            foreach(Yii::$app->user->identity->degrees as $degree) {
+                                $class = null;
+                                $currentDegree = Yii::$app->session["currentDegree"];
+                                if($currentDegree == $degree["degree"]){
+                                    $class = "degree-selected";
+                                }
+                            ?>
+                                <li><a class="option-degree <?php if($class != null) echo $class; ?>" href="<?= Yii::$app->homeUrl ?>" degree="<?= $degree["degree"]; ?>"><?= $degree["name"]; ?></a></li>
+                        <?php }?>
                         <li class="divider"></li>
+                        <?php }?>
                         <li><a class="post-link" href="logout.html"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a></li>
                   </ul>
                 </div>
@@ -107,9 +119,11 @@ AppAsset::register($this);
 			</div>
             <div class="navbar-collapse" id="user-opcions">
                 <ul class="nav navbar-nav navbar-links">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
+                    <?php
+                    if(count(Yii::$app->user->identity->degrees) > 1) {
+                        foreach(Yii::$app->user->identity->degrees as $degree) {?>
+                            <li><a class="option-degree" href="<?= Yii::$app->homeUrl ?>" degree="<?= $degree["degree"]; ?>"><?= $degree["name"]; ?></a></li>
+                    <?php }}?>
                     <li><a class="post-link" href="logout.html"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a></li>
               </ul>
             </div>

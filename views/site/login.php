@@ -1,5 +1,3 @@
-<?php //Yii::$app->assets->insert($this, Yii::$app->params['current_page']);//$this->registerJsFile(Yii::$app->request->baseUrl.'/js/controllers/loginController.js', ['position' => \yii\web\View::POS_END]); ?>
-
 <div ng-controller="loginController" class="col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-xs-12">
 	<h1 id="login-title">Login</h1>
 	<form  name="LoginForm" ng-submit="submit()">

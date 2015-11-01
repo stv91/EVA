@@ -99,6 +99,10 @@ nav.navbar {
 #user-opcions-dd a{
 	color: #1F1F25
 }
+#user-opcions-dd a.degree-selected{
+	background: #5cb85c;
+	color: white;
+}
 
 #user-opcions-dd .divider {
 	background: #B6B6C6;
@@ -161,16 +165,23 @@ nav.navbar {
 
 /************************** FORMS *****************************/
 
+.modal-footer .btn,
 .form-group label,
 .form-group .btn{
 	color: #1A1A4C;
 }
 
+.modal-footer .btn,
 .form-group .btn{
 	background: #EBEBF5;
 	border-color: #1A1A4C;
 }
 
+.modal-footer .btn {
+	font-weight: bold;
+}
+
+.modal-footer .btn:hover,
 .form-group .btn:hover {
 	background: #B6B6C6;
 }
