@@ -183,7 +183,7 @@
 		</div>
 		<div id="viewer-iframe" ng-show="type == 'pdf' || type == 'odt' || type == 'odp'"></div>
 		
-		<h3>Descripción <span class="glyphicon glyphicon-edit edit" ng-show="owner" ng-click="editing = true"></span></h3>
+		<h3>Descripción <span class="glyphicon glyphicon-edit edit" ng-show="owner" ng-click="editing = true; setTinyContent()"></span></h3>
 		<div id="material-desc" class="material-desc" ng-bind-html="description" ng-hide="editing"></div>
 		<div id="descriptionEdit" ng-show="editing">
 			<textarea></textarea>

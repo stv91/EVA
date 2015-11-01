@@ -117,7 +117,7 @@ app.controller('materialsController', function($scope, $http, $location, $alert)
             $scope.type = data.type;
             $scope.description = data.description;
 
-            tinyMCE.get(0).setContent(data.description);
+            //tinyMCE.get(0).setContent(data.description);
 
             $http.get('getcurrentuser.html').success(function(user) {
                 $scope.owner = data.user == user;
@@ -169,6 +169,10 @@ app.controller('materialsController', function($scope, $http, $location, $alert)
         }
     }
 
+    $scope.setTinyContent = function() {
+        tinyMCE.get(0).setContent($scope.description);
+    }
+
     function init() {
         alert_mg.addAlert("error borrar", "Error eliminando el material.", "No se ha podido eliminar el material. Intentelo más tarde.");
         alert_mg.addAlert("error", "Error.", "Se ha producido un error, lamentamos las molestias.");
@@ -191,7 +195,7 @@ app.controller('materialsController', function($scope, $http, $location, $alert)
 
         setModalClass();
         initDescTinyMCE();
-        
+
         if(ID != null) {
             $scope.askMaterial(ID);
         }
