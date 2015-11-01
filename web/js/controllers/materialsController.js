@@ -3,9 +3,9 @@
 
 app.controller('materialsController', function($scope, $http, $location, $alert) {
 
-    var ID = null;
-    if(getUrlParams()["m"])
-        ID = getUrlParams()["m"];
+    var ID = materialID;
+    /*if(getUrlParams()["m"])
+        ID = getUrlParams()["m"];*/
     var tinyDesc = null;
     var alert_mg = new AlertManager();
 
@@ -190,7 +190,8 @@ app.controller('materialsController', function($scope, $http, $location, $alert)
         });
 
         setModalClass();
-
+        initDescTinyMCE();
+        
         if(ID != null) {
             $scope.askMaterial(ID);
         }
@@ -201,7 +202,7 @@ app.controller('materialsController', function($scope, $http, $location, $alert)
         $scope.material_prew = false;
         $scope.owner = false;
         $scope.editing = false;
-        initDescTinyMCE();
+        
 
         $(window).resize(function(event) {
             setModalClass();

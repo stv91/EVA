@@ -122,7 +122,30 @@ class SiteController extends Controller {
     }*/
 
     public function actionMaterials() {
+        if(Yii::$app->user->isGuest ) {
+            return $this->redirect(['login']);
+        }
+
         Yii::$app->params['current_page'] = "materials";
+
+        if(Yii::$app->request->getIsPost()) {
+            $subject = Yii::$app->request->post('subject');
+            $file = $_FILES['materialFile'];
+            $material = new Material();
+            $material->setData($subject, $file);
+
+            if($material->addMaterial()) {
+                //$this->redirect(array('materials', 'm'=> $material->id));
+                return $this->render('materials', ["materialID" => $material->id]);
+            }
+            else {
+                $message = "No se ha podido guardar el archivo.";
+                if(!empty($material->getErrors())) {
+                    $message = array_values($material->getErrors())[0][0];
+                }
+                return $this->render('error', ['message' =>  $message, 'name' => "Error subiendo el material"]);
+            }
+        }
         return $this->render('materials');
     }
     
@@ -176,27 +199,6 @@ class SiteController extends Controller {
     public function actionNotes() {
         Yii::$app->params['current_page'] = "notes";
         return $this->render('notes');
-    }
-
-    public function actionUploadmaterial(){
-        if(Yii::$app->user->isGuest || !Yii::$app->request->getIsPost()) 
-            return $this->redirect(['login']);
-
-        $subject = Yii::$app->request->post('subject');
-        $file = $_FILES['materialFile'];
-        $material = new Material();
-        $material->setData($subject, $file);
-
-        if($material->addMaterial()) {
-            $this->redirect(array('materials', 'm'=> $material->id));
-        }
-        else {
-            $message = "No se ha podido guardar el archivo.";
-            if(!empty($material->getErrors())) {
-                $message = array_values($material->getErrors())[0][0];
-            }
-            return $this->render('error', ['message' =>  $message, 'name' => "Error subiendo el material"]);
-        }
     }
 
     public function actionDeletematerial($id) {
@@ -277,5 +279,10 @@ class SiteController extends Controller {
             Yii::$app->response->format = Response::FORMAT_JSON;
             return  MaterialComment::getComments($id);
         }
+    }
+
+    public function actionPrueba() {
+        Yii::$app->params['current_page'] = "exams";
+        return $this->render('exams');
     }
 }

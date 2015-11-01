@@ -1,4 +1,14 @@
 <div id="materialsController" ng-controller="materialsController" after-load>
+	<script type="text/javascript">
+	<?php 
+		if(isset($materialID)) {
+			echo 'materialID = '.$materialID.';';
+		}
+		else {
+			echo 'materialID = null;';	
+		}
+	?>
+	</script>
 	<div id="search">
 		<button id="show-search" class="btn" data-toggle="modal" data-target="#search-modal">
 			<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -214,7 +224,7 @@
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					<h4 class="modal-title">Subir archivo</h4>
 				</div>
-				<form enctype="multipart/form-data" action="uploadmaterial.html" method="POST">
+				<form enctype="multipart/form-data" action="materials.html" method="POST">
 					<div class="modal-body">
 						
 							<div class="form-group">
