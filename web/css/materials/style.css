@@ -1,0 +1,92 @@
+#show-search, #show-upload {
+	background: #B6B6C6;
+}
+
+.modal-header .close {
+	color: #b94a48;
+	opacity: 0.8;
+}
+
+.modal-content {
+	background-color: rgb(235, 235, 245) !important;
+}
+
+.modal-fullscreen .modal-content{
+	background-color: rgba(235, 235, 245, 0.8) !important;
+}
+
+/****************************************************************/
+
+
+
+#search-pc {
+	background: #b6b6c6;
+    border-bottom: 1px solid #1a1a4c;
+}
+
+#search-pc select,
+#search-pc input,
+#search-opc button,	
+#search-btn-pc {
+	border-color: #1a1a4c;
+}
+
+#search-pc select,
+#search-pc input,
+#search-opc button,
+#search-opc li{
+	color: #1A1A4C;
+}
+
+#search-opc a{
+	color: #5cb85c;
+}
+
+#search-opc button ,
+#search-btn-pc,
+#search-opc a {
+	font-weight: bold;
+}
+
+span.edit {
+	color: #1a1a4c;
+	font-size: 18px;
+}
+
+span.edit:hover {
+	cursor: pointer;
+	color: #c17977;
+}
+
+i.mce-i-[FONT-AWESOME-CLASSNAME]:before {   // FONT-AWESOME-CLASSNAME e.g. "icon-youtube"
+    content: [FONT-AWESOME-CONTENT];         // FONT-AWESOME-CONTENT e.g. "\f166"
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    color: #000;
+    font-size: 1.5em;
+    padding-right: 0.5em;
+    position: absolute;
+    top: 15%;
+    left: 0;
+ }
+
+#material-desc * {
+	color: #1a1a4c !important;
+}
+
+#material-desc {
+	border: 1px solid;
+	border-color: #1a1a4c;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background: #ebebf5;
+	border-radius: 10px;
+}
+
+#materialsController {
+	display: none;
+}
