@@ -72,6 +72,19 @@
 	width: 75%;
 }
 
+@media (max-width: 450px) {
+	#input-file-mobile {
+		width: 100%;
+	}
+
+	#file-selector label {
+		margin-top: 15px;
+		padding-left: 0;
+		text-align: center;
+		width: 100%;
+	}
+}
+
 /***********************************************************************/
 
 #search-pc {
@@ -237,19 +250,13 @@
 	margin: 0;
 }
 
-#upload-modal-pc {
-	text-align: left;
-	top: 15%;
-}
 
-#upload-modal-pc .modal-body {
+#upload-modal .modal-body {
 	padding: 10%;
 }
 
-#upload-modal-pc select {
-	width: 100%;
-	margin: 0 auto;
-	border: 1px solid;
+#upload-modal.modal-fullscreen .modal-body {
+	padding: 20px;
 }
 
 /**********************************************************/

@@ -4,8 +4,6 @@
 app.controller('materialsController', function($scope, $http, $location, $alert) {
 
     var ID = materialID;
-    /*if(getUrlParams()["m"])
-        ID = getUrlParams()["m"];*/
     var tinyDesc = null;
     var alert_mg = new AlertManager();
 
@@ -14,6 +12,9 @@ app.controller('materialsController', function($scope, $http, $location, $alert)
         $scope.modalClass = "modal fade";
         if(width < 768){
             $scope.modalClass += " modal-fullscreen force-fullscreen";
+        }
+        else {
+            $("#search-modal .modal-header button").trigger('click');
         }
     }
 
@@ -116,8 +117,6 @@ app.controller('materialsController', function($scope, $http, $location, $alert)
             $scope.date = data.date;
             $scope.type = data.type;
             $scope.description = data.description;
-
-            //tinyMCE.get(0).setContent(data.description);
 
             $http.get('getcurrentuser.html').success(function(user) {
                 $scope.owner = data.user == user;

@@ -67,41 +67,6 @@
 				</div>
 			</div>
 
-			<!-- MODAL UPLOAD -->
-			<div class="modal fade modal-fullscreen force-fullscreen" id="upload-modal" tabindex="-1" role="dialog" aria-labelledby="upload-modal" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							<h4 class="modal-title">Subir archivo</h4>
-						</div>
-						<div class="modal-body">
-							<form>
-								<div class="form-group">
-									<label for="search-mobile">Archivo</label>
-									<span id="file-selector" upload-file>
-										<button id="input-file-mobile" type="button" class="form-control">Examinar</button>
-										<label for="input-file-mobile">No se ha seleccioando ningun archivo</label>
-										<input type="file" name="materialFile"></span>
-								</div>
-								<div class="form-group">
-									<label for="subject-mobile-upload">Asignatura</label>
-									<select name="subject" id="subject-mobile-upload" class="form-control">
-										<option ng-repeat="subject in subjects" value="{{ subject.code }}">{{ subject.name  }}</option>
-									</select>
-								</div>
-							</form>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn">
-								<span class="glyphicon glyphicon-open" aria-hidden="true"></span>
-								Subir
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-
 		</div>
 		<!-- CONTENT PAGE -->
 		<div id="search-pc" class="hidden-xs">
@@ -129,7 +94,7 @@
 						</li>
 						<li class="divider"></li>
 						<li>
-							<a href="#" data-toggle="modal" data-target="#upload-modal-pc">
+							<a href="#" data-toggle="modal" data-target="#upload-modal">
 								<span class="glyphicon glyphicon-open" aria-hidden="true"></span>
 								Subir Material
 							</a>
@@ -217,38 +182,36 @@
 	</div>
 	
 	<!-- MODAL UPLOAD -->
-	<div class="modal fade" id="upload-modal-pc" tabindex="-1" role="dialog" aria-labelledby="upload-modal" aria-hidden="true">
+	<div ng-class="modalClass" id="upload-modal" tabindex="-1" role="dialog" aria-labelledby="upload-modal" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					<h4 class="modal-title">Subir archivo</h4>
 				</div>
-				<form enctype="multipart/form-data" action="materials.html" method="POST">
-					<div class="modal-body">
-						
-							<div class="form-group">
-								<label for="search-mobile">Archivo</label>
-								<span id="file-selector" upload-file>
-									<button id="input-file-mobile" type="button" class="form-control">Examinar</button>
-									<label for="input-file-mobile">No se ha seleccioando ningun archivo</label>
-									<input type="file" name="materialFile"></span>
-							</div>
-							<div class="form-group">
-								<label for="subject-mobile-upload">Asignatura</label>
-								<select name="subject" id="subject-mobile-upload" class="form-control">
-									<option ng-repeat="subject in subjects" value="{{ subject.code }}">{{ subject.name  }}</option>
-								</select>
-							</div>
-						
-					</div>
-					<div class="modal-footer">
-						<button type="submit" class="btn" ng-click="upload($event)">
-							<span class="glyphicon glyphicon-open" aria-hidden="true"></span>
-							Subir
-						</button>
-					</div>
-				</form>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="search-mobile">Archivo</label>
+							<span id="file-selector" upload-file>
+								<button id="input-file-mobile" type="button" class="form-control">Examinar</button>
+								<label for="input-file-mobile">No se ha seleccioando ningun archivo</label>
+								<input type="file" name="materialFile"></span>
+						</div>
+						<div class="form-group">
+							<label for="subject-mobile-upload">Asignatura</label>
+							<select name="subject" id="subject-mobile-upload" class="form-control">
+								<option ng-repeat="subject in subjects" value="{{ subject.code }}">{{ subject.name  }}</option>
+							</select>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn">
+						<span class="glyphicon glyphicon-open" aria-hidden="true"></span>
+						Subir
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>

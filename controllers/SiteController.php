@@ -13,6 +13,7 @@ use app\models\User;
 use app\models\Material;
 use app\models\MaterialComment;
 use app\models\Subject;
+use app\models\Exam;
 use yii\web\UploadedFile;
 
 class SiteController extends Controller {
@@ -149,38 +150,7 @@ class SiteController extends Controller {
         return $this->render('materials');
     }
     
-    public function actionSearch_materials() {
-        Yii::$app->params['current_page'] = "materials";
-
-        $toSearch = json_decode(file_get_contents("php://input"));
-        $degree = Yii::$app->session["currentDegree"];
-        $search = Material::searchMaterial($toSearch->text, $toSearch->oficials, $toSearch->noOficials, $toSearch->course, $toSearch->subject, $degree);
-        
-        $result = array();
-        foreach ($search as $key => $value) {
-            $subject = Subject::getSubjectByCode($value['subject'])["name"];
-
-            list($ano, $mes, $dia) = split("-", split(" ", $value["timestamp"])[0]);
-            $data = array(
-                'id' => $value["id"],
-                'name' => $value["original_name"],
-                'date' => "$dia/$mes/$ano",
-                'type' => $value["type"]
-            );
-            
-            if(isset($result[$subject])){
-                array_push($result[$subject], $data);
-            }
-            else {
-                $result[$subject] = array($data);
-            }
-        }
-
-        Yii::$app->response->format = Response::FORMAT_JSON;
-        return  $result;
-        
-    }
-
+ 
     public function actionMessages() {
         Yii::$app->params['current_page'] = "messages";
         return $this->render('messages');
@@ -216,6 +186,40 @@ class SiteController extends Controller {
         }
     }
 
+    /****************************************************************************************************************/
+
+    public function actionSearch_materials() {
+        Yii::$app->params['current_page'] = "materials";
+
+        $toSearch = json_decode(file_get_contents("php://input"));
+        $degree = Yii::$app->session["currentDegree"];
+        $search = Material::searchMaterial($toSearch->text, $toSearch->oficials, $toSearch->noOficials, $toSearch->course, $toSearch->subject, $degree);
+        
+        $result = array();
+        foreach ($search as $key => $value) {
+            $subject = Subject::getSubjectByCode($value['subject'])["name"];
+
+            list($ano, $mes, $dia) = split("-", split(" ", $value["timestamp"])[0]);
+            $data = array(
+                'id' => $value["id"],
+                'name' => $value["original_name"],
+                'date' => "$dia/$mes/$ano",
+                'type' => $value["type"]
+            );
+            
+            if(isset($result[$subject])){
+                array_push($result[$subject], $data);
+            }
+            else {
+                $result[$subject] = array($data);
+            }
+        }
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return  $result;
+        
+    }
+
     public function actionGetsubjects() {
         $reuslt = "";
         if(!Yii::$app->user->isGuest) {
@@ -231,8 +235,6 @@ class SiteController extends Controller {
 
     public function actionGetmaterial($id) {
         if(!Yii::$app->user->isGuest) {
-            //$id = Yii::$app->request->get("id");
-
             $material  = Material::getMaterialByID($id);
 
             if(Yii::$app->user->identity->checkSubject($material["subject"])) {
@@ -279,10 +281,5 @@ class SiteController extends Controller {
             Yii::$app->response->format = Response::FORMAT_JSON;
             return  MaterialComment::getComments($id);
         }
-    }
-
-    public function actionPrueba() {
-        Yii::$app->params['current_page'] = "exams";
-        return $this->render('exams');
     }
 }

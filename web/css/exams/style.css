@@ -1,0 +1,73 @@
+.container h2 {
+	color: #c17977;
+    font-size: 2em;
+    font-weight: bold;
+    margin-left: 5%;
+}
+
+#main-student ul {
+	list-style: outside none none;
+    padding: 0;
+}
+
+#main-student .exam-list {
+	border: 1px solid #1a1a4c;
+	border-radius: 15px;
+    margin: 20px 0;
+}
+
+#main-student .exam-list-header {
+	position: relative;
+    background: #ebebf5;
+    border-radius: 15px;
+    color: #1a1a4c;
+    font-weight: bold;
+    height: 80px;
+    width: 100%;
+}
+
+#main-student .exam-list-header.no-bottom-border {
+	border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#main-student .exam-list-header span {
+	margin-top: 32px;
+	position: absolute;
+}
+
+#main-student .exam-list-header span.title {
+	left: 15px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#main-student .exam-list-header span.date {
+	right: 45px;
+}
+
+#main-student .exam-list-header span.triangle {
+	right: 15px;
+	font-size: 18px;
+	display: block;
+}
+
+#main-student .exam-list-header span.triangle:hover {
+	cursor: pointer;
+}
+
+#main-student .exam-list-content {
+	padding: 30px;
+	display: none;
+}
+
+#main-student .exam-list-content .content{
+	border: 1px solid #1a1a4c;
+	border-radius: 15px;
+	padding: 30px;
+}
+
+.bold {
+	font-weight: bold;
+}
