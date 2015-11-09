@@ -20,7 +20,7 @@ app.controller('materialsController', function($scope, $http, $location, $alert)
 
     $scope.refreshComments = function() {
         if (ID != null) {
-            $http.get('getcomments.html?id=' + ID).
+            $http.get('material/getcomments.html?id=' + ID).
             success(function(data, status, headers, config) {
                 $scope.comments = data;
             });
@@ -45,7 +45,7 @@ app.controller('materialsController', function($scope, $http, $location, $alert)
                     onclick: function() {
                         var content = editor.getContent();
                         editor.setContent("");
-                        $http.post("savecomment.html", {
+                        $http.post("material/savecomment.html", {
                             id: ID,
                             content: content,
                             reply: commentID
@@ -76,7 +76,7 @@ app.controller('materialsController', function($scope, $http, $location, $alert)
                     image: "/images/save.png",
                     onclick: function() {
                         $scope.description = editor.getContent();
-                        $http.post("savedescription.html", {
+                        $http.post("material/savedescription.html", {
                             id: ID,
                             desc: $scope.description
                         });
@@ -94,7 +94,7 @@ app.controller('materialsController', function($scope, $http, $location, $alert)
     $scope.searchMaterials = function() {
         $scope.material_prew = false;
         ID = null;
-        $http.post('search_materials.html', $scope.search).
+        $http.post('material/searchmaterials.html', $scope.search).
         success(function(data, status, headers, config) {
             $scope.results = data;
         }).
@@ -103,13 +103,13 @@ app.controller('materialsController', function($scope, $http, $location, $alert)
         });
     }
 
-    $scope.upload = function(event) {
-        $(event.target).parents('form').get(0).submit();
+    $scope.upload = function() {
+        $("#upload-form").submit();
     }
 
     $scope.askMaterial = function(id) {
         ID = id;
-        $http.get('getmaterial.html?id=' + id).
+        $http.post('material/getmaterial.html?id=' + id).
         success(function(data, status, headers, config) {
             $scope.material_prew = true;
 
@@ -118,7 +118,7 @@ app.controller('materialsController', function($scope, $http, $location, $alert)
             $scope.type = data.type;
             $scope.description = data.description;
 
-            $http.get('getcurrentuser.html').success(function(user) {
+            $http.get('material/getcurrentuser.html').success(function(user) {
                 $scope.owner = data.user == user;
             });
 
@@ -149,7 +149,7 @@ app.controller('materialsController', function($scope, $http, $location, $alert)
 
     $scope.deleteMaterial = function() {
         if(ID != null) {
-            $http.get('deletematerial.html?id='+ID)
+            $http.post('material/deletematerial.html?id='+ID)
             .success(function(data, status, headers, config) {
                 if(data == "OK") {
                     window.location = window.location.pathname;
@@ -188,7 +188,7 @@ app.controller('materialsController', function($scope, $http, $location, $alert)
             subject: "-1"
         };
 
-        $http.get("getsubjects.html").then(function(subjects) {
+        $http.get("material/getsubjects.html").then(function(subjects) {
             $scope.subjects = subjects.data;
         });
 

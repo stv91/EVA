@@ -190,7 +190,7 @@
 					<h4 class="modal-title">Subir archivo</h4>
 				</div>
 				<div class="modal-body">
-					<form>
+					<form id="upload-form" method="post" enctype="multipart/form-data">
 						<div class="form-group">
 							<label for="search-mobile">Archivo</label>
 							<span id="file-selector" upload-file>
@@ -207,7 +207,7 @@
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn">
+					<button type="button" class="btn" ng-click="upload()">
 						<span class="glyphicon glyphicon-open" aria-hidden="true"></span>
 						Subir
 					</button>

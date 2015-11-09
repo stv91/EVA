@@ -118,8 +118,9 @@ class Material extends ActiveRecord {
     }
 
     public static function searchMaterial($text, $oficials, $noOficials, $course, $subject, $degree) {
-        $query =    "select m.* from material m, degree_subject ds where m.subject = ds.subject and ds.degree = '$degree' and "
-                    . "(original_name like '%$text%' or description like '%$text%') and m.course = '$course'"; 
+        $query =    "select m.id, m.subject, m.original_name as name, DATE_FORMAT(m.timestamp, '%d/%m/%Y') as date, m.type
+                     from material m, degree_subject ds where m.subject = ds.subject and ds.degree = '$degree' and 
+                     (original_name like '%$text%' or description like '%$text%') and m.course = '$course'"; 
         if(!$oficials && !$noOficials){
             return array();
         }

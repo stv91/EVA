@@ -22,10 +22,10 @@ class SiteController extends Controller {
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['logout', 'index', 'materials', 'exams', 'messages', 'deadlines', 'notes'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout', 'index', 'materials', 'exams', 'messages', 'deadlines', 'notes'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -123,10 +123,6 @@ class SiteController extends Controller {
     }*/
 
     public function actionMaterials() {
-        if(Yii::$app->user->isGuest ) {
-            return $this->redirect(['login']);
-        }
-
         Yii::$app->params['current_page'] = "materials";
 
         if(Yii::$app->request->getIsPost()) {
@@ -136,7 +132,6 @@ class SiteController extends Controller {
             $material->setData($subject, $file);
 
             if($material->addMaterial()) {
-                //$this->redirect(array('materials', 'm'=> $material->id));
                 return $this->render('materials', ["materialID" => $material->id]);
             }
             else {
@@ -169,117 +164,5 @@ class SiteController extends Controller {
     public function actionNotes() {
         Yii::$app->params['current_page'] = "notes";
         return $this->render('notes');
-    }
-
-    public function actionDeletematerial($id) {
-        if(!Yii::$app->user->isGuest) {
-            $material = $material = Material::find()->where(['id' => $id])->one();
-            if($material->deleteMaterial(Yii::$app->user->identity->code)){
-                return "OK";
-            }
-            else {
-                return "ERROR";
-            }
-        }
-        else {
-            return "ERROR";
-        }
-    }
-
-    /****************************************************************************************************************/
-
-    public function actionSearch_materials() {
-        Yii::$app->params['current_page'] = "materials";
-
-        $toSearch = json_decode(file_get_contents("php://input"));
-        $degree = Yii::$app->session["currentDegree"];
-        $search = Material::searchMaterial($toSearch->text, $toSearch->oficials, $toSearch->noOficials, $toSearch->course, $toSearch->subject, $degree);
-        
-        $result = array();
-        foreach ($search as $key => $value) {
-            $subject = Subject::getSubjectByCode($value['subject'])["name"];
-
-            list($ano, $mes, $dia) = split("-", split(" ", $value["timestamp"])[0]);
-            $data = array(
-                'id' => $value["id"],
-                'name' => $value["original_name"],
-                'date' => "$dia/$mes/$ano",
-                'type' => $value["type"]
-            );
-            
-            if(isset($result[$subject])){
-                array_push($result[$subject], $data);
-            }
-            else {
-                $result[$subject] = array($data);
-            }
-        }
-
-        Yii::$app->response->format = Response::FORMAT_JSON;
-        return  $result;
-        
-    }
-
-    public function actionGetsubjects() {
-        $reuslt = "";
-        if(!Yii::$app->user->isGuest) {
-            $degree = Yii::$app->session["currentDegree"];
-            $user = Yii::$app->user->identity->code;
-            $isTeacher = Yii::$app->user->identity->isTeacher;
-            $result = Subject::getSubjectsByUser($degree, $user, $isTeacher);
-        }
-
-        Yii::$app->response->format = Response::FORMAT_JSON;
-        return  $result;
-    }
-
-    public function actionGetmaterial($id) {
-        if(!Yii::$app->user->isGuest) {
-            $material  = Material::getMaterialByID($id);
-
-            if(Yii::$app->user->identity->checkSubject($material["subject"])) {
-                Yii::$app->response->format = Response::FORMAT_JSON;
-                return  $material;
-            }
-        }
-    }
-
-    public function actionGetcurrentuser() {
-        if(!Yii::$app->user->isGuest) {
-            $code = Yii::$app->user->identity->code;
-            Yii::$app->response->format = Response::FORMAT_JSON;
-            return  $code;
-        }
-    }
-
-    public function actionSavedescription() {
-        if(!Yii::$app->user->isGuest) {
-            $data = json_decode(file_get_contents("php://input"));
-            $material = Material::find()->where(['id' => $data->id])->one();
-            $material->description = $data->desc;
-            $material->save();
-        }
-    }
-
-    public function actionSavecomment() {
-        if(!Yii::$app->user->isGuest) {
-            $data = json_decode(file_get_contents("php://input"));
-            $comment = new MaterialComment();
-            $comment->user = Yii::$app->user->identity->code;
-            $comment->is_teacher = Yii::$app->user->identity->isTeacher;
-            $comment->content = $data->content;
-            $comment->material = $data->id;
-            if($data->reply != null) {
-                $comment->reply = $data->reply;
-            }
-            $comment->save();
-        }
-    }
-
-    public function actionGetcomments($id) {
-        if(!Yii::$app->user->isGuest) {
-            Yii::$app->response->format = Response::FORMAT_JSON;
-            return  MaterialComment::getComments($id);
-        }
     }
 }
