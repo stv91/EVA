@@ -20,17 +20,27 @@ class AppAsset extends AssetBundle
     public $jsOptions = ['position' => \yii\web\View::POS_HEAD];
     public $css = [];
     public $js = [];
+
+    private function getJsFiles($baseDir) {
+        $files = [];
+        $stdPath = Yii::$app->utils->stdPath(Yii::$app->basePath . "/web/js/$baseDir");
+        if(file_exists($stdPath)) {
+            $dirIter = new \RecursiveDirectoryIterator($stdPath);
+            $iter = new \RecursiveIteratorIterator($dirIter);
+            $regexIter = new \RegexIterator($iter, '/^.+\.js$/i', \RecursiveRegexIterator::GET_MATCH);
+            foreach($regexIter as $name => $object){
+                $path = str_replace('\\', '/', Yii::$app->basePath . '/web/');
+                $file = str_replace($path, '', str_replace('\\', '/', $name));
+                array_push($files, $file);
+            }
+        }
+        return $files;
+    }
     
     private function setJsFiles(){
-        $path = new \RecursiveDirectoryIterator(Yii::$app->basePath . '\web\js\common');
-        $iter = new \RecursiveIteratorIterator($path);
-        $regexIter = new \RegexIterator($iter, '/^.+\.js$/i', \RecursiveRegexIterator::GET_MATCH);
-        foreach($regexIter as $name => $object){
-           $file = str_replace(Yii::$app->basePath . '\\web\\', '', $name);
-            array_push($this->js, str_replace('\\', '/', $file));
-        }
-        if(file_exists ( Yii::$app->basePath.'\\web\\js\\controllers\\' . Yii::$app->params['current_page'] . 'Controller.js' ))
-            array_push($this->js, 'js/controllers/' . Yii::$app->params['current_page'] . 'Controller.js');
+        $this->js = $this->getJsFiles("common");
+        error_log(Yii::$app->params['current_page']);
+        $this->js = array_merge($this->js, $this->getJsFiles("controllers/" . Yii::$app->params['current_page'] ));
     }
     
     private function setCssFiles(){

@@ -14,7 +14,7 @@ use app\models\MaterialComment;
 use app\models\Subject;
 use yii\web\UploadedFile;
 
-class MaterialController extends Controller {
+class MaterialsController extends Controller {
     
     public function behaviors() {
         return [
@@ -22,7 +22,8 @@ class MaterialController extends Controller {
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => [  'deletematerial',
+                        'actions' => [  'index',
+                                        'deletematerial',
                                         'searchmaterials', 
                                         'getsubjects', 
                                         'getmaterial', 
@@ -55,6 +56,29 @@ class MaterialController extends Controller {
                 'class' => 'yii\web\ErrorAction',
             ]
         ];
+    }
+
+    public function actionIndex() {
+        Yii::$app->params['current_page'] = "materials";
+
+        if(Yii::$app->request->getIsPost()) {
+            $subject = Yii::$app->request->post('subject');
+            $file = $_FILES['materialFile'];
+            $material = new Material();
+            $material->setData($subject, $file);
+
+            if($material->addMaterial()) {
+                return $this->render('materials', ["materialID" => $material->id]);
+            }
+            else {
+                $message = "No se ha podido guardar el archivo.";
+                if(!empty($material->getErrors())) {
+                    $message = array_values($material->getErrors())[0][0];
+                }
+                return $this->render('error', ['message' =>  $message, 'name' => "Error subiendo el material"]);
+            }
+        }
+        return $this->render('materials');
     }
 
     public function actionDeletematerial($id) {

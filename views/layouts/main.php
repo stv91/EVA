@@ -47,19 +47,19 @@ AppAsset::register($this);
 				<!--<ul class="hidden-sm nav navbar-nav navbar-links">-->
                 <ul class="hidden-sm nav navbar-nav navbar-links">
 					<li <?php if(Yii::$app->params['current_page'] == 'materials') echo "class=\"active\"" ?>>
-                        <a href="materials.html"><?=  Yii::$app->params['pages']['materials']; ?></a>
+                        <a href="/materials/index.html"><?=  Yii::$app->params['pages']['materials']; ?></a>
                     </li>
 					<li <?php if(Yii::$app->params['current_page'] == 'messages') echo "class=\"active\"" ?>>
-                        <a href="messages.html"><?=  Yii::$app->params['pages']['messages']; ?></a>
+                        <a href="/messages/index.html"><?=  Yii::$app->params['pages']['messages']; ?></a>
                     </li>
                     <li <?php if(Yii::$app->params['current_page'] == 'deadlines') echo "class=\"active\"" ?>>
-                        <a href="deadlines.html"><?=  Yii::$app->params['pages']['deadlines']; ?></a>
+                        <a href="/deadlines/index.html"><?=  Yii::$app->params['pages']['deadlines']; ?></a>
                     </li>
                     <li <?php if(Yii::$app->params['current_page'] == 'exams') echo "class=\"active\"" ?>>
-                        <a href="exams.html"><?=  Yii::$app->params['pages']['exams']; ?></a>
+                        <a href="/exams/index.html"><?=  Yii::$app->params['pages']['exams']; ?></a>
                     </li>
                     <li <?php if(Yii::$app->params['current_page'] == 'notes') echo "class=\"active\"" ?>>
-                        <a href="notes.html"><?=  Yii::$app->params['pages']['notes']; ?></a>
+                        <a href="/notes/index.html"><?=  Yii::$app->params['pages']['notes']; ?></a>
                     </li>
 				</ul>
                 <!--<div id="menu-sm" class="btn-group hidden-lg hidden-md hidden-xs">-->
@@ -73,19 +73,19 @@ AppAsset::register($this);
                             <a href="/"><?=  Yii::$app->params['pages']['index']; ?></a>
                         </li>
     					<li <?php if(Yii::$app->params['current_page'] == 'materials') echo "class=\"active\"" ?>>
-                            <a href="materials.html"><?=  Yii::$app->params['pages']['materials']; ?></a>
+                            <a href="/materials/index.html"><?=  Yii::$app->params['pages']['materials']; ?></a>
                         </li>
     					<li <?php if(Yii::$app->params['current_page'] == 'messages') echo "class=\"active\"" ?>>
-                            <a href="messages.html"><?=  Yii::$app->params['pages']['messages']; ?></a>
+                            <a href="/messages/index.html"><?=  Yii::$app->params['pages']['messages']; ?></a>
                         </li>
                         <li <?php if(Yii::$app->params['current_page'] == 'deadlines') echo "class=\"active\"" ?>>
-                            <a href="deadlines.html"><?=  Yii::$app->params['pages']['deadlines']; ?></a>
+                            <a href="/deadlines/index.html"><?=  Yii::$app->params['pages']['deadlines']; ?></a>
                         </li>
                         <li <?php if(Yii::$app->params['current_page'] == 'exams') echo "class=\"active\"" ?>>
-                            <a href="exams.html"><?=  Yii::$app->params['pages']['exams']; ?></a>
+                            <a href="/exams/index.html"><?=  Yii::$app->params['pages']['exams']; ?></a>
                         </li>
                         <li <?php if(Yii::$app->params['current_page'] == 'notes') echo "class=\"active\"" ?>>
-                            <a href="notes.html"><?=  Yii::$app->params['pages']['notes']; ?></a>
+                            <a href="/notes/index.html"><?=  Yii::$app->params['pages']['notes']; ?></a>
                         </li>
     				</ul>
                 </div>

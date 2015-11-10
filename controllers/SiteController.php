@@ -122,7 +122,7 @@ class SiteController extends Controller {
         }
     }*/
 
-    public function actionMaterials() {
+    /*public function actionMaterials() {
         Yii::$app->params['current_page'] = "materials";
 
         if(Yii::$app->request->getIsPost()) {
@@ -143,26 +143,5 @@ class SiteController extends Controller {
             }
         }
         return $this->render('materials');
-    }
-    
- 
-    public function actionMessages() {
-        Yii::$app->params['current_page'] = "messages";
-        return $this->render('messages');
-    }
-    
-    public function actionExams() {
-        Yii::$app->params['current_page'] = "exams";
-        return $this->render('exams');
-    }
-    
-    public function actionDeadlines() {
-        Yii::$app->params['current_page'] = "deadlines";
-        return $this->render('deadlines');
-    }
-    
-    public function actionNotes() {
-        Yii::$app->params['current_page'] = "notes";
-        return $this->render('notes');
-    }
+    }*/
 }

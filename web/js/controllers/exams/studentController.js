@@ -4,10 +4,12 @@
 /* global $ */
 'use strict';
 
-app.controller('examsController', function ($scope, $http, $location, $alert) {
+app.controller('studentController', function ($scope, $http, $location, $alert) {
+
+	console.log("studentController");
 
 	function askForExams() {
-		$http.post("exams/getexams.html").success(function(data, status, headers, config) {
+		$http.post("getexams.html").success(function(data, status, headers, config) {
             $scope.exams = data;
         });
 	}

@@ -16,10 +16,13 @@ class ExamsController extends Controller {
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['getexams'],
                 'rules' => [
                     [
-                        'actions' => ['getexams'],
+                        'actions' => ['index',
+                                      'doexam',
+                                      'createquestions',
+                                      'getexams'
+                                     ],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -40,6 +43,26 @@ class ExamsController extends Controller {
                 'class' => 'yii\web\ErrorAction',
             ]
         ];
+    }
+
+    public function actionIndex() {
+        Yii::$app->params['current_page'] = "exams";
+        if(Yii::$app->user->identity->isTeacher == 0) {
+            return $this->render('student');    
+        }
+        else {
+            return $this->render('teacher');
+        }
+    }
+
+    public function actionDoexam() {
+        Yii::$app->params['current_page'] = "exams";
+        return $this->render('doExam');
+    }
+
+    public function actionCreatequestions() {
+        Yii::$app->params['current_page'] = "exams";
+        return $this->render('createQuestions');
     }
 
     public function actionGetexams() {

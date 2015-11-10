@@ -71,3 +71,36 @@
 .bold {
 	font-weight: bold;
 }
+
+/*************************************************************************/
+
+#no-exams {
+	display: table;
+    height: 80%;
+    left: 50%;
+    margin-left: -250px;
+    position: absolute;
+    width: 500px;
+}
+
+@media (max-width: 500px) {
+	#no-exams {
+		margin-left: -200px;
+		width: 400px;
+	}
+}
+
+@media (max-width: 400px) {
+	#no-exams {
+		margin-left: -150px;
+		width: 300px;
+	}
+}
+
+#no-exams>h3 {
+	color: #767686;
+    display: table-cell;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+}
