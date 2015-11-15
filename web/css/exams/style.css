@@ -5,15 +5,25 @@
     margin-left: 5%;
 }
 
+.container h3.subtitle {
+    color: #c17977;
+
+}
+
 #main-student ul {
 	list-style: outside none none;
     padding: 0;
+    font-weight: bold;
 }
 
 #main-student .exam-list {
 	border: 1px solid #1a1a4c;
 	border-radius: 15px;
     margin: 20px 0;
+}
+
+#main-student .exam-list.to-do {
+    border: 1px solid #5cb85c;
 }
 
 #main-student .exam-list-header {
@@ -24,6 +34,15 @@
     font-weight: bold;
     height: 80px;
     width: 100%;
+}
+
+#main-student .exam-list-header.to-do {
+    background: #b6e0b6;
+    color: #5cb85c;
+}
+
+#main-student .exam-list-header.to-do:hover {
+    cursor: pointer;
 }
 
 #main-student .exam-list-header.no-bottom-border {
@@ -41,6 +60,11 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+#main-student .exam-list-header label.to-do {
+    font-size: 18px;
+    margin: 0 0 0 10px;
 }
 
 #main-student .exam-list-header span.date {
@@ -65,6 +89,7 @@
 #main-student .exam-list-content .content{
 	border: 1px solid #1a1a4c;
 	border-radius: 15px;
+	color: #1a1a4c;
 	padding: 30px;
 }
 
@@ -72,6 +97,34 @@
 	font-weight: bold;
 }
 
+.btn-questions, .btn-questions:focus {
+	background: #ebebf5;
+    border: 1px solid #1a1a4c;
+    color: #1a1a4c;
+    display: block;
+    margin: 15px auto;
+    display: inline-block;
+}
+
+.buttons-container {
+    text-align: center;
+}
+
+.btn-questions:hover {
+	color: #767686;
+	border-color: #767686;
+}
+
+.btn-questions.btn-add-exam {
+    font-size: 30px;
+    padding: 15px;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+.btn-questions.btn-add-exam span{
+    top: 4px;
+}
 /*************************************************************************/
 
 #no-exams {
@@ -103,4 +156,228 @@
     font-weight: bold;
     text-align: center;
     vertical-align: middle;
+}
+
+/*********************************************************************************/
+
+h2.title-center {
+	text-align: center;
+	margin: 0;
+}
+
+.form-group .form-value {
+	margin-bottom: 30px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.clickable-text {
+	color: #b6b6c6;
+}
+
+.clickable-text:hover {
+	cursor: pointer;
+	color: #5f5f82;
+}
+
+.clickable-text span {
+	float: right;
+}
+
+.clickable-text p {
+	float: left;
+    width: 90%;
+}
+
+.btn-questions-extra {
+    width: 70px;
+    margin-bottom: 15px;
+}
+
+.btn-container {
+	bottom: 0;
+    left: 50%;
+    margin-bottom: -60px;
+    margin-left: -35px;
+    position: absolute;
+    width: 70px;
+}
+
+/***********************************************************************************/
+.time-box,  .info-box {
+	background: #ebebf5;
+    border: 1px solid #1a1a4c;
+    border-radius: 15px;
+    color: #1a1a4c;
+    display: table;
+    margin: 20px auto;
+    padding: 15px;
+}
+
+.time-box {
+	padding-bottom: 5px;
+}
+
+.info-box {
+	font-size: 14px;
+    line-height: 20px;
+    padding-top: 5px;
+}
+.info-box ul {
+	padding-left: 20px;
+}
+
+h4.warning {
+	color: #c17977;
+    font-weight: bold;
+    text-align: center;
+}
+
+h2.exam-title {
+	margin-top: 25px;
+}
+
+.question {
+	background: #ebf5eb;
+    border: 1px solid #1a1a4c;
+    color: #1f1f25;
+    font-weight: bold;
+    margin: 10px;
+    padding: 15px;
+}
+
+.all-questions .question {
+    background: #ebebf5;
+    position: relative;
+    width: 100%;
+}
+
+li.question {
+    list-style-type: none;
+}
+
+li.question h5 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+li.question .question-value {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+ul.other-answer li{
+    margin-bottom: 10px;
+}
+
+.all-questions>ul {
+    padding: 0;
+}
+
+.all-questions>ul ul{
+    padding-left: 5%;
+}
+
+
+.test {
+	background: #ebebf5 none repeat scroll 0 0;
+    border: 1px solid #1a1a4c;
+    padding: 20px 5%;
+}
+
+h3.exam-subtitle {
+	color: #c17977;
+    font-weight: bold;
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 25px;
+    margin-top: 0;
+}
+
+.btn-send {
+	display: block;
+    float: none;
+    margin: 30px auto;
+}
+
+.modal-content {
+    background-color: rgb(235, 235, 245) !important;
+}
+
+.modal.modal-fullscreen.force-fullscreen .modal-body {
+	margin-top: 60px;
+    padding: 20px;
+}
+
+.fail-exam, .pass-exam {
+	font-size: 5vmax;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 40%;
+    width: 100%;
+}
+
+.fail-exam {
+	color: #c17977;
+}
+
+.pass-exam {
+	color: #5cb85c;
+}
+
+/************************************************************************************************/
+
+h2.title-manageExam, 
+h2.title-create-questions{
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.btn-manageExam {
+    float: none;
+    margin-top: 20px;
+}
+
+#form-manageExam input[type=text],
+#form-manageExam select {
+    margin: 15px 5% 20px;
+    width: 90%;
+}
+
+#form-manageExam .checkbox {
+    
+}
+
+#form-manageExam .checkbox label {
+    text-align: center;
+    font-weight: bold; 
+    width: 100%;
+}
+
+#form-manageExam .checkbox input {
+    margin-top: 2px;
+}
+
+#description {
+    margin-top: 15px;
+}
+
+/***************************************************************************************************************/
+
+.is-valid {
+    color: rgba(1, 1, 1, 0.2);
+    font-size: 48px;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: calc(50% - 24px);
+    width: 100%;
+}
+
+.action-buttons {
+    position: absolute;
+    right: 15px;
+    top: 0;
 }

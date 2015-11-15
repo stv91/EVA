@@ -1,3 +1,19 @@
+/******************** SEND WITH FORM **********************/
+function send(url, fields) {
+    var $form = $('<form>', {
+        action: url,
+        method: 'post',
+        hidden: 'true'
+    });
+    if(fields){
+      $.each(fields, function(key, val) {
+          $form.append('<input name="'+key+'" value ="'+val+'" type="text">');
+      });
+    }
+    $("html").append($form);
+    $form.submit();
+}
+
 /******************** SUBMIT FORM *************************************/
 
 function doSubmit($http, url, data) {

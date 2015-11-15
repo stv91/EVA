@@ -112,7 +112,7 @@ AppAsset::register($this);
                         <?php }?>
                         <li class="divider"></li>
                         <?php }?>
-                        <li><a class="post-link" href="logout.html"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a></li>
+                        <li><a class="post-link" href="/logout.html"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a></li>
                   </ul>
                 </div>
                 
@@ -124,7 +124,7 @@ AppAsset::register($this);
                         foreach(Yii::$app->user->identity->degrees as $degree) {?>
                             <li><a class="option-degree" href="<?= Yii::$app->homeUrl ?>" degree="<?= $degree["degree"]; ?>"><?= $degree["name"]; ?></a></li>
                     <?php }}?>
-                    <li><a class="post-link" href="logout.html"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a></li>
+                    <li><a class="post-link" href="/logout.html"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a></li>
               </ul>
             </div>
 		</div>

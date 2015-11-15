@@ -6,15 +6,14 @@
 
 app.controller('studentController', function ($scope, $http, $location, $alert) {
 
-	console.log("studentController");
-
 	function askForExams() {
 		$http.post("getexams.html").success(function(data, status, headers, config) {
             $scope.exams = data;
         });
+        setTimeout(askForExams, 10000);
 	}
 
-	$scope.showContent = function($event) {
+	$scope.showContent = function($event, exam) {
 		var arrow = $($event.target);
 		var item = $(arrow.parents(".exam-list").get(0));
 
@@ -51,8 +50,20 @@ app.controller('studentController', function ($scope, $http, $location, $alert) 
 		$(window).resize(function(event) {
 			resizeTitleWidth();
 		});
+
+		askForExams();
+	}
+
+	$scope.propouseQuestions = function(item) {
+		send("createquestions.html", {'id': item.id});
+	}
+
+	$scope.doExam = function(exam) {
+		if(exam.open == 1) {
+			send("doexam.html", {'exam': exam.id});
+		}
 	}
 
 	init();
-	askForExams();
+	
 });

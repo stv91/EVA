@@ -39,7 +39,6 @@ class AppAsset extends AssetBundle
     
     private function setJsFiles(){
         $this->js = $this->getJsFiles("common");
-        error_log(Yii::$app->params['current_page']);
         $this->js = array_merge($this->js, $this->getJsFiles("controllers/" . Yii::$app->params['current_page'] ));
     }
     

@@ -98,6 +98,7 @@ a.navbar-brand img:first-child {
 #user-name {
     display: table-cell;
     line-height: 1.2;
+    text-align: center;
 }
 
 
@@ -132,6 +133,8 @@ body > .container {
 @media (max-width: 767px) {
 	#icon-user-mobile {
 		display: table;
+		position: absolute;
+    	width: 100%;
 	}
 	
 	.navbar-nav > li > a {

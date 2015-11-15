@@ -82,7 +82,7 @@ class MaterialsController extends Controller {
     }
 
     public function actionDeletematerial($id) {
-        $material = $material = Material::find()->where(['id' => $id])->one();
+        $material = Material::find()->where(['id' => $id])->one();
         if($material->deleteMaterial(Yii::$app->user->identity->code)){
             return "OK";
         }
