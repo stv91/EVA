@@ -1,0 +1,68 @@
+.container h2 {
+	color: #c17977;
+    font-size: 2em;
+    font-weight: bold;
+    margin-left: 5%;
+}
+
+.container h3 {
+	color: #c17977;
+    font-weight: bold;
+    margin-left: 5%;
+}
+
+h2.title-center {
+	text-align: center;
+	margin: 0;
+}
+
+h2.title-index {
+	margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.marks-subject {
+	margin-bottom: 40px;
+}
+
+.marks-subject>div {
+	float: none;
+	margin: 0 auto;
+}
+
+table {
+	margin-top: 20px;
+}
+
+
+
+.table-bordered > thead > tr > th, 
+.table-bordered > tbody > tr > th, 
+.table-bordered > tfoot > tr > th, 
+.table-bordered > thead > tr > td, 
+.table-bordered > tbody > tr > td, 
+.table-bordered > tfoot > tr > td {
+	border-color: ;
+}
+
+.table-bordered > thead:first-child > tr > th {
+	background: #1a1a4c;
+	color: #b6b6c6;
+	font-size: 20px;
+	padding: 20px;
+}
+
+table.table-bordered,
+table.table-bordered td,
+table.table-bordered th {
+	text-align: center;
+	color: #1f1f25;
+}
+
+table.table-bordered th {
+	background: #5f5f82;
+	color: #1a1a4c;
+	font-weight: bold;
+	width: 50%;
+}
+

@@ -4,6 +4,7 @@ namespace app\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\web\UploadedFile;
+use app\components\Utils;
 
 class Exam extends ActiveRecord {
 
@@ -11,17 +12,8 @@ class Exam extends ActiveRecord {
         return 'exam';
     }
 
-    private static function getCurrentCourse() {
-    	if(intval(date("n")) >= 9) {
-    		return date("Y") . "-" . (intval(date("y")) + 1);
-    	}
-    	else {
-    		return (intval(date("Y")) - 1)  . "-" . date("y");
-    	}	
-    }
-
     public static function getStudentExams($user, $degree) {
-    	$course = self::getCurrentCourse();
+    	$course = Utils::getCurrentCourse();
     	$query =   "select ex.id, s.name as subject, DATE_FORMAT(ex.date, '%d/%m/%Y %H:%i') as start, DATE_FORMAT(ADDTIME(ex.date, ex.duration), '%d/%m/%Y %H:%i') as finish,
                     TIME_FORMAT(ex.duration, '%H:%i') as duration, ex.description, ex.student_questions as studentQuestions, ex.num_questions as numQuestions,
                     case when (NOW() between ex.date and ADDTIME(ex.date, ex.duration)) then 1 else 0 end as open
@@ -35,7 +27,7 @@ class Exam extends ActiveRecord {
     }
 
     public static function getTearcherExams($user, $degree) {
-        $course = self::getCurrentCourse();
+        $course = Utils::getCurrentCourse();
         $query =   "select distinct ex.id, s.name as subject, DATE_FORMAT(ex.date, '%d/%m/%Y %H:%i') as start, DATE_FORMAT(ADDTIME(ex.date, ex.duration), '%d/%m/%Y %H:%i') as finish,
                     TIME_FORMAT(ex.duration, '%H:%i') as duration, ex.description, ex.student_questions as studentQuestions, ex.num_questions as numQuestions
                     from exam ex, subject_course_teacher sct, degree_subject ds, subject s
@@ -47,7 +39,7 @@ class Exam extends ActiveRecord {
     }
 
     public static function checkExam($exam, $user, $isTeacher) {
-    	$course = self::getCurrentCourse();
+    	$course = Utils::getCurrentCourse();
 
     	if(!$isTeacher) {
     		$query =   "select count(*)

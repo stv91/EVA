@@ -4,6 +4,6 @@
 /* global $ */
 'use strict';
 
-app.controller('notesController', function ($scope, $http, $location, $alert) {
+app.controller('teacherController', function ($scope, $http, $location, $alert) {
 	
 });

@@ -42,6 +42,10 @@ class DeadlinesController extends Controller {
 	
 	public function actionIndex() {
 		Yii::$app->params['current_page'] = "deadlines";
-        return $this->render('deadlines');
+
+        $user = Yii::$app->user->identity;
+        if($user->isTeacher == 0)
+            return $this->render('student');
+        return $this->render('teacher');
 	}
 }

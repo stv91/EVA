@@ -18,7 +18,7 @@ class Utils extends Component {
 			return str_replace('\\', '/', $path);
 	}
 
-	function normalize ($cadena){
+	public function normalize ($cadena){
 	    $originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
 	    $modificadas = 'AAAAAAACEEEEIIIIDNOOOOOOUUUUYBsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
 	    $cadena = utf8_decode($cadena);
@@ -26,4 +26,13 @@ class Utils extends Component {
 	    $cadena = strtolower($cadena);
 	    return utf8_encode($cadena);
 	}
+
+	public static function getCurrentCourse() {
+    	if(intval(date("n")) >= 9) {
+    		return date("Y") . "-" . (intval(date("y")) + 1);
+    	}
+    	else {
+    		return (intval(date("Y")) - 1)  . "-" . date("y");
+    	}	
+    }
 }

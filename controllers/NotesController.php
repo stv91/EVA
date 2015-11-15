@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\helpers\Url;
 use yii\web\Response;
+use app\models\Mark;
 
 class NotesController extends Controller {
 
@@ -17,7 +18,9 @@ class NotesController extends Controller {
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index'],
+                        'actions' => [  'index',
+                                        'getstudentmarks'
+                                     ],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -42,6 +45,18 @@ class NotesController extends Controller {
 	
 	public function actionIndex() {
 		Yii::$app->params['current_page'] = "notes";
-        return $this->render('notes');
+
+        $user = Yii::$app->user->identity;
+        if($user->isTeacher == 0)
+            return $this->render('student');
+        return $this->render('teacher');
 	}
+
+    public function actionGetstudentmarks() {
+        $user = Yii::$app->user->identity;
+        $degree = Yii::$app->session["currentDegree"];
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return Mark::getMarksByStudent($user->code, $degree);
+    }
 }
