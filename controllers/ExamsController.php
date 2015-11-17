@@ -33,7 +33,8 @@ class ExamsController extends Controller {
                                       'updateexam',
                                       'getquestions',
                                       'questions',
-                                      'deletequestion'
+                                      'deletequestion',
+                                      'getexam'
                                      ],
                         'allow' => true,
                         'roles' => ['@'],
@@ -56,6 +57,7 @@ class ExamsController extends Controller {
                     'deletequestion' => ['post'],
                     'editquestion' => ['post'],
                     'getquestiondata' => ['post'],
+                    'getexam' => ['post'],
                 ],
             ],
         ];
@@ -326,7 +328,6 @@ class ExamsController extends Controller {
 
     public function actionUpdateexam() {
         $data = json_decode(file_get_contents("php://input"));
-        error_log(file_get_contents("php://input"));
         if($this->updateExam($data)) {
             return "OK";
         }
@@ -383,5 +384,15 @@ class ExamsController extends Controller {
             return "ERROR";
         }
         return "ERROR";
+    }
+
+     public function actionGetexam() {
+        $user = Yii::$app->user->identity;
+        $degree = Yii::$app->session["currentDegree"];
+        $exam = Yii::$app->request->post('id');
+        if($user->isTeacher == 1 && Exam::checkExam($exam, $user->code, $user->isTeacher)) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return Exam::find()->where(['id' => $exam])->one();
+        }
     }
 }

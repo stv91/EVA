@@ -16,6 +16,23 @@
     font-weight: bold;
 }
 
+#main-student .content {
+    font-weight: initial;
+}
+
+#main-student .content>div * {
+    list-style: initial;
+    padding: initial;
+}
+
+#main-student .content>div ul {
+    padding-left: 45px
+}
+
+blockquote {
+    border: none;
+}
+
 #main-student .exam-list {
 	border: 1px solid #1a1a4c;
 	border-radius: 15px;

@@ -13,7 +13,8 @@ function uploadFilesMask() {
 		var input = $(this).find("input");
 		var label = $(this).find("label");
 		input.hide();
-		$(this).find("button").click(function(){
+		$(this).find("button").click(function(e){
+			e.preventDefault();
 			input.trigger("click");
 		});
 		input.change(function () {

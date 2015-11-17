@@ -33,7 +33,7 @@
 					<div class="content">
 						<p><span class="bold">Duración:</span> {{ item.duration }}</p>
 						<p><span class="bold">Nº de preguntas:</span> {{ item.numQuestions }}</p>
-						<div style="font-weight: normal" ng-bind-html="item.description"></div>
+						<div style="font-weight: normal" ng-bind-html="item.description | html"></div>
 					</div>
 				</div>
 			</li>

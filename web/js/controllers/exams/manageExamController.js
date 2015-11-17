@@ -11,10 +11,63 @@ app.controller('manageExamController', function($scope, $http, $location, $alert
 		date: "",
 		startTime: "",
 		duration: "",
-		numQuestions: "",
+		numQuestions: "10",
 		description: "",
 		studentQuestions: false
 	};
+
+	function getSubject(id) {
+    	for(var i = 0; i < $scope.subjects.length; i++) {
+    		if($scope.subjects[i].code == id){
+    			return $scope.subjects[i];
+    		}
+    	}
+    	return null;
+    }
+
+    function getExamData() {
+    	if(examID) {
+	    	$http({
+		        url: 'getexam.html',
+		        method: "POST",
+		        headers : {'Content-Type': 'application/x-www-form-urlencoded'} ,
+		        data: "id="+examID 
+		    }).success(function(data) {
+		    	var date = data.date.split(' ')[0];
+		    	var startTime = data.date.split(' ')[1];
+
+		    	var parts = date.split('-');
+		    	date = parts[2] +'/'+ parts[1] +'/'+ parts[0];
+
+		    	parts = startTime.split(':');
+		    	startTime = parts[0] +':'+parts[1];
+
+		    	parts = data.duration.split(':');
+		    	var duration = parts[0] +':'+parts[1];
+		    	$scope.exam = {
+		    		subject: getSubject(data.subject),
+					date: date,
+					startTime: startTime,
+					duration: duration,
+					numQuestions: data.num_questions,
+					description: data.description,
+					studentQuestions: data.student_questions == 1
+		    	};
+		    	$('#description textarea').val(data.description);
+		    	initDescTinyMCE();
+		    });
+		}
+    }
+
+    function getSubjects() {
+		$http.get("/materials/getsubjects.html").then(function(subjects) {
+			$scope.subjects = subjects.data;
+			if($scope.exam.subject == "") {
+				$scope.exam.subject = $scope.subjects[0];
+				getExamData();
+			}
+		});
+	}
 
 	$scope.limit =  function(event, limit) {
 		var value = $(event.target).val();
@@ -93,15 +146,6 @@ app.controller('manageExamController', function($scope, $http, $location, $alert
 		return true;
 	}
 
-	function getSubjects() {
-		$http.get("/materials/getsubjects.html").then(function(subjects) {
-			$scope.subjects = subjects.data;
-			if($scope.exam.subject == "") {
-				$scope.exam.subject = $scope.subjects[0];
-			}
-		});
-	}
-
 	$scope.createExam = function() {
 		$scope.exam.description = tinyMCE.activeEditor.getContent();
 		if(validate()){
@@ -150,9 +194,8 @@ app.controller('manageExamController', function($scope, $http, $location, $alert
     }
 
 	function init() {
-		initDescTinyMCE();
-		createMessages();
 		getSubjects();
+		createMessages();
 	}
 
 	init();

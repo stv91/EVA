@@ -1,0 +1,214 @@
+.container h2 {
+	color: #c17977;
+    font-size: 2em;
+    font-weight: bold;
+    margin-left: 5%;
+}
+
+.container h3.subtitle {
+    color: #c17977;
+
+}
+
+#main-deadlines ul {
+	list-style: outside none none;
+    padding: 0;
+}
+
+#main-deadlines .content * {
+    list-style: initial;
+    padding: initial;
+}
+
+#main-deadlines .content ul {
+    padding-left: 45px
+}
+
+blockquote {
+    border: none;
+}
+
+#main-deadlines .deadline-list {
+	border: 1px solid #1a1a4c;
+	border-radius: 15px;
+    margin: 20px 0;
+}
+
+#main-deadlines .deadline-list-header.no-bottom-border {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#main-deadlines .deadline-list-header {
+    background: #ebebf5;
+    border-radius: 15px;
+    color: #1a1a4c;
+    font-weight: bold;
+    font-weight: bold;
+    height: 80px;
+    position: relative;
+    width: 100%;
+}
+
+#main-deadlines .deadline-list-header span {
+	margin-top: 32px;
+	position: absolute;
+}
+
+#main-deadlines .deadline-list-header span:first-child {
+    margin-top: 5px;
+}
+
+#main-deadlines .deadline-list-header span.title {
+    left: 15px;
+}
+
+#main-deadlines .deadline-list-header span.title > * {
+    line-height: 18px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
+#main-deadlines .deadline-list-header span.date {
+	right: 45px;
+}
+
+#main-deadlines .deadline-list-header span.triangle {
+	right: 15px;
+	font-size: 18px;
+	display: block;
+}
+
+#main-deadlines .deadline-list-header span.triangle:hover {
+	cursor: pointer;
+}
+
+#main-deadlines .deadline-list-content {
+	padding: 15px 30px 30px;
+	display: none;
+}
+
+#main-deadlines .deadline-list-content .content{
+	border: 1px solid #1a1a4c;
+	border-radius: 15px;
+	color: #1a1a4c;
+	padding: 30px;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.btn-deadlines, .btn-deadlines:focus {
+	background: #ebebf5;
+    border: 1px solid #1a1a4c;
+    color: #1a1a4c;
+    display: block;
+    display: inline-block;
+}
+
+.buttons-container {
+    text-align: center;
+}
+
+.btn-deadlines:hover {
+	color: #767686;
+	border-color: #767686;
+}
+
+.btn-deadlines:hover * {
+    color: #767686;
+}
+
+#no-deadlines {
+    display: table;
+    height: 80%;
+    left: 50%;
+    margin-left: -250px;
+    position: absolute;
+    width: 500px;
+}
+
+#no-deadlines>h3 {
+    color: #767686;
+    display: table-cell;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.buttons-files {
+    margin-left: 3%;
+    margin-bottom: 10px;
+}
+
+.buttons-files *{
+    color: #1a1a4c;
+}
+
+.buttons-files a {
+    display: block;
+    margin-top: 10px;
+}
+
+.buttons-files a:hover,
+.buttons-files a:hover *,
+.buttons-files a:visited,
+.buttons-files a:visited *,
+ .buttons-files a:active,
+.buttons-files a:active *,
+.buttons-files a:focus,
+.buttons-files a:focus * {
+    color: #c17977;
+    text-decoration: none;
+}
+
+#main-deadlines .deadline-list-content form {
+    display: inline-block;
+}
+
+.btn-deadlines.btn-add-deadline {
+    border-radius: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 15px;
+}
+
+.btn-deadlines.btn-add-deadline span {
+    top: 4px;
+}
+
+.buttons-margin {
+    margin: 15px;
+}
+
+.modal-content {
+    background-color: rgb(235, 235, 245) !important;
+}
+
+h2.title-center {
+    text-align: center;
+    margin: 0;
+}
+
+h2.title-manageDeadline {
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.btn-manageDeadline {
+    float: none;
+    margin-top: 20px;
+}
+
+#form-manageDeadline input[type=text],
+#form-manageDeadline select {
+    margin: 15px 5% 20px;
+    width: 90%;
+}
+
+
+
+

@@ -149,7 +149,7 @@
 		<div id="viewer-iframe" ng-show="type == 'pdf' || type == 'odt' || type == 'odp'"></div>
 		
 		<h3>Descripción <span class="glyphicon glyphicon-edit edit" ng-show="owner" ng-click="editing = true; setTinyContent()"></span></h3>
-		<div id="material-desc" class="material-desc" ng-bind-html="description" ng-hide="editing"></div>
+		<div id="material-desc" class="material-desc" ng-bind-html="description | html" ng-hide="editing"></div>
 		<div id="descriptionEdit" ng-show="editing">
 			<textarea></textarea>
 		</div>
@@ -167,14 +167,14 @@
 							<span title="responder" class="glyphicon glyphicon-share-alt reply-comment" aria-hidden="true" ng-click="replyComment(comment, $event)"></span>
 							<span> {{ comment.date }}</span>
 						</div>
-						<div class="comment-content" ng-bind-html="comment.content"></div>
+						<div class="comment-content" ng-bind-html="comment.content | html"></div>
 					</div>
 					<div class="commentReply"  ng-repeat="commentReply in comment.replies">
 						<div class="comment-header">
 							<span> {{ commentReply.name }} {{ commentReply.surname }} </span>
 							<span> {{ commentReply.date }}</span>
 						</div>
-						<div class="comment-content" ng-bind-html="commentReply.content"></div>
+						<div class="comment-content" ng-bind-html="commentReply.content | html"></div>
 					</div>
 				</div>
 			</div>

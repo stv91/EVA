@@ -75,7 +75,7 @@ class MaterialsController extends Controller {
                 if(!empty($material->getErrors())) {
                     $message = array_values($material->getErrors())[0][0];
                 }
-                return $this->render('error', ['message' =>  $message, 'name' => "Error subiendo el material"]);
+                return $this->render('//site/error', ['message' =>  $message, 'name' => "Error subiendo el material"]);
             }
         }
         return $this->render('materials');
