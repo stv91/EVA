@@ -3,6 +3,7 @@ namespace app\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\db\Query;
+use app\components\Utils;
  
 class User implements \yii\web\IdentityInterface{
     
@@ -130,6 +131,19 @@ class User implements \yii\web\IdentityInterface{
         $result = Yii::$app->db->createCommand($query)->queryAll();
 
         return count($result) > 0;
+    }
+
+    public static function getUserBySubject($subject) {
+        $course = Utils::getCurrentCourse();
+        $query =   "select distinct t.email, concat_ws(' ', t.name, t.surname) as name, 1 as isTeacher
+                    from teacher t, subject_course_teacher sct
+                    where t.code = sct.teacher and t.email is not null and t.email <> '' and sct.subject = '$subject'
+                    union all
+                    select distinct s.email, concat_ws(' ', s.name, s.surname) as name, 0 as isTeacher
+                    from student s, enrollment e
+                    where s.code = e.student and e.course = '2015-16' and e.subject = '$subject';";
+
+        return Yii::$app->db->createCommand($query)->queryAll();
     }
 }
 

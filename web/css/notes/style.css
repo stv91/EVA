@@ -45,7 +45,7 @@ table {
 	border-color: ;
 }
 
-.table-bordered > thead:first-child > tr > th {
+.table-bordered > .first-header > tr > th {
 	background: #1a1a4c;
 	color: #b6b6c6;
 	font-size: 20px;
@@ -60,9 +60,71 @@ table.table-bordered th {
 }
 
 table.table-bordered th {
-	background: #5f5f82;
+	/*background: #5f5f82;*/
+	background: #b6b6c6;
 	color: #1a1a4c;
 	font-weight: bold;
+}
+
+table.exam-table th {
 	width: 50%;
 }
 
+#no-marks {
+	display: table;
+    height: 80%;
+    left: 50%;
+    margin-left: -250px;
+    position: absolute;
+    width: 500px;
+}
+
+@media (max-width: 500px) {
+	#no-marks {
+		margin-left: -200px;
+		width: 400px;
+	}
+}
+
+@media (max-width: 400px) {
+	#no-marks {
+		margin-left: -150px;
+		width: 300px;
+	}
+}
+
+#no-marks>h3 {
+	color: #767686;
+    display: table-cell;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+}
+
+table>thead th:hover {
+	cursor: pointer;
+}
+
+table>thead:first-child th:hover {
+	cursor: initial;
+}
+
+/*****************************************************************************************************/
+
+.title-marks *{
+	text-align: center;
+	margin-left: 0 !important;
+}
+
+.mark-value input {
+	margin: 0 auto;
+    width: 63px;
+    display: none;
+}
+
+.mark-value span {
+	width: 65px;
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+}

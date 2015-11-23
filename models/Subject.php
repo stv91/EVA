@@ -4,6 +4,7 @@ namespace app\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\web\UploadedFile;
+use app\components\Utils;
 
 class Subject extends ActiveRecord {
 
@@ -31,5 +32,17 @@ class Subject extends ActiveRecord {
 		$result = Yii::$app->db->createCommand($query)->queryOne();
 
 		return $result;
+	}
+
+	public static function checkSubject($subject, $user, $isTeacher){
+		$course = Utils::getCurrentCourse();
+		$query = "select count(*) from enrollment where student = '$user' and course = '$course' and subject = '$subject'";
+		if($isTeacher == 1){
+			$query = "select count(*) from subject_course_teacher where teacher = '$user' and subject = '$subject';";
+		}
+		if(!Yii::$app->db->createCommand($query)->queryScalar()) {
+			return false;
+		}
+		return true;
 	}
 }

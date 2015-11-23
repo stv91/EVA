@@ -57,15 +57,20 @@ app.controller('manageExamController', function($scope, $http, $location, $alert
 		    	initDescTinyMCE();
 		    });
 		}
+		else {
+			initDescTinyMCE();
+		}
     }
 
     function getSubjects() {
-		$http.get("/materials/getsubjects.html").then(function(subjects) {
+		$http.get("/materials/getsubjects.html")
+		.then(function(subjects) {
 			$scope.subjects = subjects.data;
 			if($scope.exam.subject == "") {
 				$scope.exam.subject = $scope.subjects[0];
-				getExamData();
+				
 			}
+			getExamData();
 		});
 	}
 
@@ -104,7 +109,7 @@ app.controller('manageExamController', function($scope, $http, $location, $alert
 		var hour = parseInt(parts[0], 10);
 		var minutes = parseInt(parts[1], 10);
 
-		return hour >= 0 &&  hour <= 12 && minutes >= 0 && minutes <= 59;
+		return hour >= 0 &&  hour <= 24 && minutes >= 0 && minutes <= 59;
 	}
 
 	function isValidNumber(number) {

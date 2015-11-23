@@ -20,6 +20,7 @@ class Exam extends ActiveRecord {
                     from subject s, degree_subject ds, tuition t, enrollment e, exam ex
                     where t.student = $user and t.degree like '$degree' and ds.degree = t.degree
                     and e.subject = ds.subject and ds.subject = s.code and ex.subject = s.code and e.course = '$course'
+                    and NOW() < ADDTIME(ex.date, ex.duration)
                     and (select count(*) from mark m where ex.id = m.exam and m.student = $user) = 0 order by ex.date asc;";
 
 		$exams = Yii::$app->db->createCommand($query)->queryAll();

@@ -1,0 +1,266 @@
+#msg-panel {
+	border-right: 1px solid #1a1a4c;
+	position: absolute;
+	width: 300px;
+	left: 0;
+	top: 70px;
+	bottom: 0;
+	z-index: 1;
+}
+
+#arrow-panel {
+	background: #ebebf5;
+    border: 1px solid #1a1a4c;
+    display: block;
+    color: #1a1a4c;
+    float: right;
+    line-height: 50px;
+    top: 0;
+    width: 20px;
+    margin-right: -1px;
+}
+
+#arrow-panel:hover {
+	cursor: pointer;
+}
+
+#msg-panel>.content {
+	position: absolute;
+	width: 300px;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	background: #b6b6c6;
+}
+
+.btn-messages {
+	color: #1a1a4c;
+	display: block;
+	border: 1px solid #1a1a4c;
+	background: #ebebf5;
+}
+
+#add-conversation {
+	margin-top: 25px;
+	border-radius: 25px;
+	font-weight: bold;
+	line-height: 32px;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+div.divider {
+	height: 2px;
+	width: 100%;
+	background: #ebebf5;
+	display: block;
+}
+
+.add-conversation-container {
+	height: 100px;
+}
+
+.conversation-container {
+	background: #b6b6c6;
+}
+
+ul.conversations {
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.conversations>li {
+	list-style: none;
+	background: #ebebf5;
+	border: 1px solid #1a1a4c;
+	color: #1a1a4c;
+	padding: 0 10px;
+	margin: 5px 10px;
+	position: relative;
+	border-radius: 10px;
+}
+
+.conversations>li.selected,
+.conversations>li.selected * {
+	color: #5cb85c;
+	border-color: #5cb85c;
+	background: #ebf5eb;
+}
+
+.conversations>li {
+	cursor: pointer;
+}
+
+.conversations>li h5,
+.conversations>li h6 {
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.conversations li>span.glyphicon-info-sign {
+	position: absolute;
+	right: 35px;
+	top: 10px;
+}
+
+.conversations li>span.glyphicon-remove {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+
+.conversations li>span:hover {
+	cursor: pointer;
+}
+
+.conversations li>span.glyphicon-remove:hover {
+	color: #c17977;
+}
+
+.conversations li>span.glyphicon-info-sign:hover {
+	color:#5cb85c;	
+}
+
+.members {
+	background: #fff none repeat scroll 0 0;
+    border: 1px solid #1a1a4c;
+    border-radius: 5px;
+    display: none;
+    left: 10px;
+    position: absolute;
+    right: 10px;
+    top: 30px;
+    z-index: 1;
+}
+
+.members {
+	margin: 0;
+	padding: 0;
+}
+
+.members>li {
+	list-style: none;
+	padding: 5px 10px;
+}
+
+.conversation-container h4 {
+	text-align: center;
+}
+
+.conversation-container h5 {
+	font-weight: bold;
+}
+
+.modal-content {
+    background-color: rgb(235, 235, 245) !important;
+}
+
+#write-panel {
+	background: #b6b6c6 none repeat scroll 0 0;
+	border-top: 1px solid #1a1a4c;
+    bottom: 0;
+    height: 120px;
+    left: 301px;
+    position: absolute;
+    right: 0;
+}
+
+#write-panel>div {
+	display: block;
+    margin: 20px auto 0;
+    width: 90%;
+}
+
+#write-panel textarea {
+	border: 1px solid #1a1a4c;
+	height: 80px;
+	padding: 10px;
+    resize: none;
+    width: calc(100% - 90px);
+}
+
+#btn-send-msg {
+	border: 1px solid #1a1a4c;
+	color: #1a1a4c;
+    font-size: 18px;
+    font-weight: bold;
+    height: 80px;
+    margin-top: -63px;
+    width: 80px;
+}
+
+#messages,
+#new-conversation{
+	position: absolute;
+	left: 300px;
+	right: 0;
+	bottom: 120px;
+	top: 70px;
+	overflow-y: auto;
+}
+
+#new-convesation {
+	bottom: 0;
+}
+
+#messages ul {
+	margin: 0 auto;
+	padding: 0;
+}
+
+#messages li {
+	list-style: none;
+	border: 1px solid #1a1a4c;
+	border-radius: 20px;
+	width: calc(100% - 40px);
+	position: relative;
+	margin: 10px;
+	margin-left: 20px;
+}
+
+#messages li * {
+	color: #1a1a4c;
+}
+
+#messages li .header {
+	background: #ebebf5;
+	border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 50px;
+}
+
+
+#messages li .header>span{
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	font-weight: bold;
+}
+
+#messages li .header>span:first-child {
+	right: auto;
+	left: 15px;
+	width: calc(100% - 160px);
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#messages li .content {
+	padding: 15px;
+}
+
+#users-to-add select {
+	display: inline;
+	width: calc(100% - 35px);
+}
+
+#btn-add-user {
+	float: right;
+    font-size: 32px;
+    width: 32px;
+}
