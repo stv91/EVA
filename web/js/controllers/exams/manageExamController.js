@@ -53,6 +53,9 @@ app.controller('manageExamController', function($scope, $http, $location, $alert
 					description: data.description,
 					studentQuestions: data.student_questions == 1
 		    	};
+		    	$("#num-questions").spinner().spinner("value", data.num_questions);
+		    	$("#duration").val(data.duration.replace(/:00$/, ''));
+		    	$("#time").val(startTime);
 		    	$('#description textarea').val(data.description);
 		    	initDescTinyMCE();
 		    });
@@ -117,6 +120,7 @@ app.controller('manageExamController', function($scope, $http, $location, $alert
 	}
 
 	function validate() {
+		console.log($scope.exam);
 		for (var key in $scope.exam) {
 			var val = $scope.exam[key];
 			if(typeof val == 'string') {
@@ -151,8 +155,23 @@ app.controller('manageExamController', function($scope, $http, $location, $alert
 		return true;
 	}
 
+	function time2String(id){
+		var value = $("#"+id).timespinner("value");
+		if(value) {
+			var date = new Date(value);
+			var hour = date.getHours();
+			var min = date.getMinutes();
+			return (hour < 10? "0"+hour : hour) +":"+ (min < 10? "0"+min : min);
+		}
+		return "";
+	}
+
+
 	$scope.createExam = function() {
 		$scope.exam.description = tinyMCE.activeEditor.getContent();
+		$scope.exam.startTime = time2String("time");
+		$scope.exam.duration = time2String("duration");
+		$scope.exam.numQuestions = $("#num-questions").spinner().spinner("value");
 		if(validate()){
 			var data = {
 				exam : examID,
@@ -164,6 +183,7 @@ app.controller('manageExamController', function($scope, $http, $location, $alert
 				description: $scope.exam.description,
 				studentQuestions: $scope.exam.studentQuestions
 			}
+
 			//send("updateexam.html", data);
 			$http.post("updateexam.html", data)
 			.success(function(data) {
@@ -198,9 +218,28 @@ app.controller('manageExamController', function($scope, $http, $location, $alert
         });
     }
 
+    function initJqueryUIWidget() {
+    	$( "#date" ).datepicker({
+    		showOn: "both",
+    		dateFormat: "dd/mm/yy",
+    		minDate: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
+    		buttonText: "<span class='glyphicon glyphicon-calendar'></span>"
+		});
+		$("#date").next('button').addClass('input-group-addon');
+
+		initTimeSpinner();
+		$("#time").timespinner();
+		$("#duration").timespinner();
+		$("#num-questions").spinner({
+			min: 0,
+			max: 100
+		});
+    }
+
 	function init() {
 		getSubjects();
 		createMessages();
+		initJqueryUIWidget();
 	}
 
 	init();

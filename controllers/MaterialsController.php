@@ -96,7 +96,9 @@ class MaterialsController extends Controller {
 
         $toSearch = json_decode(file_get_contents("php://input"));
         $degree = Yii::$app->session["currentDegree"];
-        $search = Material::searchMaterial($toSearch->text, $toSearch->oficials, $toSearch->noOficials, $toSearch->course, $toSearch->subject, $degree);
+        $email = Yii::$app->user->identity->email;
+        $search = Material::searchMaterial($toSearch->text, $toSearch->oficials, $toSearch->noOficials, 
+            $toSearch->course, $toSearch->subject, $degree, $email);
         
         $result = array();
         foreach ($search as $key => $value) {

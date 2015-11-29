@@ -10,10 +10,16 @@ app.controller('messagesController', function ($scope, $http, $location, $alert)
 	var currentConversation = null;
 	var alert_mg = new AlertManager();
 
+	$scope.showTeachers = true;
+	$scope.showStudents = true;
+
 	function createMessages() {
-		alert_mg.addAlert("error", "Error:", "El mensaje no se ha podido enviar");
-		alert_mg.addAlert("error-leave", "Error:", "No se pudó salir de la conversación");
-		alert_mg.addAlert("ok-leave", "Conversación abandonarda:", "Ha abandonado la conversación con éxito.", "success");
+		alert_mg.addAlert("error", "Error:", "El mensaje no se ha podido enviar.");
+		alert_mg.addAlert("error-leave", "Error:", "No se pudó salir de la conversación.");
+		alert_mg.addAlert("ok-leave", "Conversación abandonada:", "Ha abandonado la conversación con éxito.", "success");
+		alert_mg.addAlert("error-create", "Error:", "No se ha podido crear la conversación.");
+		alert_mg.addAlert("error-create-users", "Error:", "Debes añadir al menos un usuario a parte de ti.");
+		alert_mg.addAlert("error-create-name", "Error:", "La conversación debe tener un nombre.");
 	}
 
 	$scope.showInfo = function(event, conversation) {
@@ -207,8 +213,6 @@ app.controller('messagesController', function ($scope, $http, $location, $alert)
 		$http.get("getusersbysubject.html?id="+$scope.subject.code)
 		.then(function(users) {
 			$scope.users = users.data;
-			if($scope.users.length > 0)
-				$scope.user = $scope.users[0].email;
 		});
 	}
 
@@ -231,13 +235,51 @@ app.controller('messagesController', function ($scope, $http, $location, $alert)
 		}
 	}
 
-	$scope.createConversation = function() {
-		var data = {
-			"subject": $scope.subject.code,
-			"name": $scope.convName,
-			"users": $scope.addedUsers
+	$scope.removeUser = function(user) {
+		for(var i = 0; i < $scope.addedUsers.length; i++){
+			if($scope.addedUsers[i].email == user.email){
+				$scope.addedUsers.splice(i, 1);
+				break;
+			}
 		}
-		$http.post("createconversation.html", data);
+	}
+
+	function validateNewConversation() {
+		var aux = $scope.convName.replace(/\s/g, '');
+		if(aux.length == 0){
+			alert_mg.showAlert($alert, 'error-create-name');
+			return false;
+		}
+		if($scope.addedUsers.length == 0){
+			alert_mg.showAlert($alert, 'error-create-users');
+			return false;
+		}
+		return true;
+	}
+
+	$scope.createConversation = function() {
+		if(validateNewConversation()) {
+			var data = {
+				"subject": $scope.subject.code,
+				"name": $scope.convName,
+				"users": $scope.addedUsers
+			}
+			$http.post("createconversation.html", data)
+			.success(function(data) {
+				if(data == 'ERROR') {
+					alert_mg.showAlert($alert, 'error-create');
+				}
+				else {
+					init();
+				}
+			})
+			.error(function() {
+				alert_mg.showAlert($alert, 'error-create');
+			});
+
+
+		}
+		
 	}
 
 	function init() {
@@ -272,9 +314,48 @@ app.directive('onFinishRender', function ($timeout) {
         link: function (scope, element, attr) {
             if (scope.$last === true) {
                 $timeout(function () {
-                    $(".conversations>li:first-child").addClass('selected');
+                	console.log($(".conversations li:first-child").length);
+                    $($(".conversations>li").get(0)).addClass('selected');
                 });
             }
         }
     }
+});
+
+app.filter('userFilter', function() {
+
+	function selectUser(out, scope) {
+		if (out.length > 0) {
+			if(scope.user == null || scope.user == undefined){
+				scope.user = out[0].email;
+			}
+			else {
+				var exists = false;
+				angular.forEach(out, function(user) {
+					if(user.email == scope.user) {
+
+						exists = true;
+					}
+				});
+				if(!exists){
+					scope.user = out[0].email;
+				}
+			}
+		}
+	}
+
+	return function(input, scope) {
+		
+		var out = [];
+		angular.forEach(input, function(user) {
+			if ((user.isTeacher == 0 && scope.showStudents) || (user.isTeacher == 1 && scope.showTeachers)) {
+				out.push(user);
+			}
+		});
+		
+		selectUser(out, scope);
+
+		return out;
+	}
+
 });

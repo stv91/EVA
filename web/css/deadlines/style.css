@@ -203,12 +203,42 @@ h2.title-manageDeadline {
     margin-top: 20px;
 }
 
-#form-manageDeadline input[type=text],
+#form-manageDeadline input[type=text]:not(.ui-spinner-input),
 #form-manageDeadline select {
-    margin: 15px 5% 20px;
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-right: 0;
+    margin-top: 15px;
+    margin-left: 5%;
+    width: 90%;
+}
+}
+
+span.ui-spinner {
+    height: 34px;
+    border-color: #1a1a4c;
+    color: #1a1a4c;
+}
+
+#date {
+    width: calc(90% - 40px) !important;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+span.ui-spinner {
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-right: 0;
+    margin-top: 15px;
+    margin-left: 5%;
     width: 90%;
 }
 
-
-
-
+#form-manageDeadline button.input-group-addon {
+    width: 40px;
+    height: 34px;
+    margin-bottom: 2px;
+    border-color: #1a1a4c;
+    color:#1a1a4c;
+    background: #ebebf5;
+}

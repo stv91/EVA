@@ -44,9 +44,9 @@
 		</ul>
 	</div>
 	<div class="no-questions" ng-hide="questions.length > 0">
-		<p>Aun no hay ninguna pregunta</p>
+		<h3>Aun no hay ninguna pregunta</h3>
 		<div class="buttons-container">
-			<button class="btn btn-questions">
+			<button class="btn btn-questions" ng-click="addQuestion();">
 				<span class="glyphicon glyphicon-plus-sign"></span>
 				Añadir pregunta
 			</button>

@@ -11,6 +11,9 @@
 			<div class="conversation-container">
 				<h4>Mis conversaciones</h4>
 				<ul class="conversations">
+					<div ng-hide="conversations.length > 0">
+						No hay convesaciones
+					</div>
 					<li id="{{conversation.id}}" ng-repeat="conversation in conversations" ng-click="selectConversation(conversation)" on-finish-render>
 						<span class="glyphicon glyphicon-info-sign" ng-click="showInfo($event, conversation)"></span>
 						<span class="glyphicon glyphicon-remove" ng-click="updateConversationToLeave($event,conversation)"
@@ -27,14 +30,14 @@
 		<span id="arrow-panel" class="glyphicon glyphicon-chevron-{{ slide }}" ng-click="togglePanel()"></span>
 	</div>
 
-	<div id="write-panel" ng-show="showMessages">
+	<div id="write-panel" ng-show="showMessages && conversations.length > 0">
 		<div>
 			<textarea></textarea>
 			<button id="btn-send-msg" class="btn" ng-click="sendMessage()">Enviar</button>
 		</div>
 	</div>
 
-	<div id="messages" ng-show="showMessages">
+	<div id="messages" ng-show="showMessages && conversations.length > 0">
 		<ul>
 			<li ng-repeat="msg in messages">
 				<div class="header">
@@ -46,7 +49,8 @@
 		</ul>
 	</div>
 
-	<div id="new-conversation" ng-hide="showMessages">
+	<div id="new-conversation" ng-hide="showMessages && conversations.length > 0">
+		<h2> Nueva conversación </h2>
 		<div id="form-manageExam" class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
 			<div class="form-group">
 				<label for="mySelect">Asignatura</label>
@@ -59,28 +63,35 @@
 				<input type="text" class="form-control" id="name" ng-model="convName" placeholder="Nombre de la conversacion">
 			</div>
 			<div id="users-to-add" class="form-group">
-				<label for="date">
-					Fecha
-					<span style="display: none">
+				<label for="users">
+					Usuarios
+					<span>
 						<input class="ng-pristine ng-untouched ng-valid" type="checkbox" ng-model="showTeachers">
 						Profesores
 					</span>
-					<span style="display: none">
+					<span>
 						<input class="ng-pristine ng-untouched ng-valid" type="checkbox" ng-model="showStudents">
 						Alumnos
 					</span>
 				</label>
-			    <select class="form-control" ng-model="user">
-			    	<option ng-repeat="u in users" value="{{u.email}}"> {{u.name}} ({{u.email}})</option>
-			    </select>
-			    <span id="btn-add-user" class="glyphicon glyphicon-plus-sign" ng-click="addUser()"></span>
+				<div>
+					<span id="btn-add-user" class="glyphicon glyphicon-plus-sign" ng-click="addUser()"></span>
+				    <select id="users" class="form-control" ng-model="user">
+				    	<option ng-repeat="u in users | userFilter:this" value="{{u.email}}"> {{u.name}} ({{u.email}})</option>
+				    </select>
+				</div>
+			    
 			</div>
-			<div>
-				<ul>
-					<li ng-repeat="u in addedUsers">{{u.name}} ({{u.email}})</li>
+			<div class="users">
+				<label>Participantes</label>
+				<ul class="form-control">
+					<li ng-repeat="u in addedUsers">{{u.name}} ({{u.email}}) <span class="glyphicon glyphicon-remove" ng-click="removeUser(u)"></span></li>
+					<li> Tú (<?= Yii::$app->user->identity->email ?>)</li>
 				</ul>
 			</div>
-			<button class="btn" ng-click="createConversation()">Crear</button>
+			<div class="buttons-container">
+				<button class="btn btn-success" ng-click="createConversation()">Crear</button>
+			</div>
 		</div>
 
 	</div>

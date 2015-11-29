@@ -99,12 +99,13 @@ class MessagesController extends Controller {
         $user = Yii::$app->user->identity;
         if(Subject::checkSubject($id, $user->code, $user->isTeacher)) {
             Yii::$app->response->format = Response::FORMAT_JSON;
-            return User::getUserBySubject($id);
+            return User::getUserBySubject($id, $user->email);
         }
     }
 
     public function actionCreateconversation() {
         $data = json_decode(file_get_contents("php://input"));
+
         $conv = new Conversation();
         $conv->subject = $data->subject;
         $conv->name = $data->name;
@@ -113,12 +114,29 @@ class MessagesController extends Controller {
         $cv = new ConversationUser();
         $cv->conversation = $conv->id;
         $cv->user = Yii::$app->user->identity->email;
-        $cv->save();
-        foreach ($data->users as $user) {
-            $cv = new ConversationUser();
-            $cv->conversation = $conv->id;
-            $cv->user = $user->email;
-            $cv->save();
+
+        $transaction = Yii::$app->db->beginTransaction();
+        if($cv->save()) {
+            $error = false;
+            foreach ($data->users as $user) {
+                $cv = new ConversationUser();
+                $cv->conversation = $conv->id;
+                $cv->user = $user->email;
+                if(!$cv->save()) {
+                    $error = true;
+                    break;
+                }
+            }
+            if($error) {
+                $transaction->rollBack();
+                return "ERROR";
+            }
+            $transaction->commit();
+            return "OK";
+        }
+        else {
+            $transaction->rollBack();
+            return "ERROR";
         }
     }
 }

@@ -133,15 +133,15 @@ class User implements \yii\web\IdentityInterface{
         return count($result) > 0;
     }
 
-    public static function getUserBySubject($subject) {
+    public static function getUserBySubject($subject, $email) {
         $course = Utils::getCurrentCourse();
         $query =   "select distinct t.email, concat_ws(' ', t.name, t.surname) as name, 1 as isTeacher
                     from teacher t, subject_course_teacher sct
-                    where t.code = sct.teacher and t.email is not null and t.email <> '' and sct.subject = '$subject'
+                    where t.code = sct.teacher and t.email is not null and t.email <> '' and t.email <> '$email' and sct.subject = '$subject'
                     union all
                     select distinct s.email, concat_ws(' ', s.name, s.surname) as name, 0 as isTeacher
                     from student s, enrollment e
-                    where s.code = e.student and e.course = '2015-16' and e.subject = '$subject';";
+                    where s.email <> '$email' and s.code = e.student and e.course = '2015-16' and e.subject = '$subject';";
 
         return Yii::$app->db->createCommand($query)->queryAll();
     }

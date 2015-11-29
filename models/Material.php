@@ -117,10 +117,18 @@ class Material extends ActiveRecord {
         return false;
     }
 
-    public static function searchMaterial($text, $oficials, $noOficials, $course, $subject, $degree) {
-        $query =    "select m.id, m.subject, m.original_name as name, DATE_FORMAT(m.timestamp, '%d/%m/%Y') as date, m.type
-                     from material m, degree_subject ds where m.subject = ds.subject and ds.degree = '$degree' and 
-                     (original_name like '%$text%' or description like '%$text%') and m.course = '$course'"; 
+    public static function searchMaterial($text, $oficials, $noOficials, $course, $subject, $degree, $email) {
+            $query =   "select m.id, m.subject, m.original_name as name, DATE_FORMAT(m.timestamp, '%d/%m/%Y') as date, m.type
+                        from material m, degree_subject ds where m.subject = ds.subject and ds.degree = '$degree' and 
+                        (original_name like '%$text%' or description like '%$text%') and m.course = '$course'
+                        and m.subject in 
+                        (select distinct e.subject from enrollment e, student s, degree_subject ds
+                        where e.course = '$course' and ds.subject = e.subject and email <> '' and email is not null
+                        and ds.degree = '$degree' and e.student = s.code and email = '$email'
+                        union all
+                        select distinct sct.subject from subject_course_teacher sct, teacher t, degree_subject ds
+                        where t.code = sct.teacher and ds.subject = sct.subject and email <> '' and email is not null
+                        and ds.degree = '$degree' and email = '$email');"; 
         if(!$oficials && !$noOficials){
             return array();
         }

@@ -10,8 +10,8 @@
 		      ng-model="deadline.subject"></select>
 		</div>
 		<div class="form-group">
-			<label for="time">Nombre</label>
-			<input type="text" class="form-control" id="time" ng-model="deadline.name" placeholder="nombre" ng-keyup="limit($event, 256)">
+			<label for="name">Nombre</label>
+			<input type="text" class="form-control" id="name" ng-model="deadline.name" placeholder="nombre" ng-keyup="limit($event, 256)">
 		</div>
 		<div class="form-group">
 			<label for="date">Fecha tope</label>

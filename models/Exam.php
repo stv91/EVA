@@ -14,7 +14,7 @@ class Exam extends ActiveRecord {
 
     public static function getStudentExams($user, $degree) {
     	$course = Utils::getCurrentCourse();
-    	$query =   "select ex.id, s.name as subject, DATE_FORMAT(ex.date, '%d/%m/%Y %H:%i') as start, DATE_FORMAT(ADDTIME(ex.date, ex.duration), '%d/%m/%Y %H:%i') as finish,
+    	$query =   "select distinct ex.id, s.name as subject, DATE_FORMAT(ex.date, '%d/%m/%Y %H:%i') as start, DATE_FORMAT(ADDTIME(ex.date, ex.duration), '%d/%m/%Y %H:%i') as finish,
                     TIME_FORMAT(ex.duration, '%H:%i') as duration, ex.description, ex.student_questions as studentQuestions, ex.num_questions as numQuestions,
                     case when (NOW() between ex.date and ADDTIME(ex.date, ex.duration)) then 1 else 0 end as open
                     from subject s, degree_subject ds, tuition t, enrollment e, exam ex

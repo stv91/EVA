@@ -42,6 +42,9 @@ app.controller('createDeadlineController', function ($scope, $http, $location, $
 		    	initDescTinyMCE();
 		    });
 		}
+		else {
+			initDescTinyMCE();
+		}
     }
 
 	function getSubjects() {
@@ -140,6 +143,14 @@ app.controller('createDeadlineController', function ($scope, $http, $location, $
 	function init() {
 		getSubjects();
 		createMessages();
+
+		$( "#date" ).datepicker({
+    		showOn: "both",
+    		dateFormat: "dd/mm/yy",
+    		minDate: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
+    		buttonText: "<span class='glyphicon glyphicon-calendar'></span>"
+		});
+		$("#date").next('button').addClass('input-group-addon');
 	}
 
 	init();

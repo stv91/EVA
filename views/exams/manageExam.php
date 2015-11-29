@@ -15,15 +15,15 @@
 		</div>
 		<div class="form-group">
 			<label for="time">Hora de incio</label>
-			<input type="text" class="form-control" id="time" ng-model="exam.startTime" placeholder="hh:mm" ng-keyup="limit($event, 5)">
+			<input type="text" id="time" ng-model="exam.startTime" placeholder="hh:mm">
 		</div>
 		<div class="form-group">
 			<label for="duration">Duración</label>
-			<input type="text" class="form-control" id="duration" ng-model="exam.duration" placeholder="hh:mm" ng-keyup="limit($event, 5)">
+			<input type="text" id="duration" ng-model="exam.duration" placeholder="hh:mm">
 		</div>
 		<div class="form-group">
 			<label for="num-questions">Número de preguntas</label>
-			<input type="text" class="form-control" id="num-questions" ng-model="exam.numQuestions" ng-keyup="limit($event, 3)">
+			<input type="text" id="num-questions" ng-model="exam.numQuestions" ng-keyup="limit($event, 3)">
 		</div>
 		<div class="form-group">
 			<label for="description">Descripción</label>

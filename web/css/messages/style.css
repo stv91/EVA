@@ -40,7 +40,9 @@
 	background: #ebebf5;
 }
 
-#add-conversation {
+#add-conversation,
+#add-conversation:focus {
+	color: #1a1a4c;
 	margin-top: 25px;
 	border-radius: 25px;
 	font-weight: bold;
@@ -48,6 +50,11 @@
 	overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+#add-conversation:hover {
+	border-color: #767686;
+	color: #767686;
 }
 
 div.divider {
@@ -203,6 +210,10 @@ ul.conversations {
 	overflow-y: auto;
 }
 
+#new-conversation {
+	bottom: 0;
+}
+
 #new-convesation {
 	bottom: 0;
 }
@@ -256,11 +267,66 @@ ul.conversations {
 
 #users-to-add select {
 	display: inline;
-	width: calc(100% - 35px);
+	width: calc(100% - 45px);
 }
 
-#btn-add-user {
+#btn-add-user,
+#btn-add-user:focus {
+	color: #1a1a4c;
 	float: right;
     font-size: 32px;
     width: 32px;
+    margin-left: 10px
+}
+
+#btn-add-user:hover {
+	color: #767686;
+}
+
+#btn-add-user:hover {
+	cursor: pointer;
+}
+
+.buttons-container {
+	text-align: center;
+}
+
+.users * {
+	color: #1a1a4c;
+}
+
+.users ul {
+	background: #ebebf5;
+	height: auto;
+	list-style: none;
+	padding: 10px 20px;
+	margin: 20px 5%;
+	width: 90%;
+}
+
+#users-to-add>label>span {
+	font-weight: normal;
+	display: table-cell;
+	padding: 15px 10px;
+	padding-left: 0;
+}
+
+.users li>span:hover {
+	color: #c17977;
+	cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+#new-conversation h2 {
+	color: #c17977;
+    text-align: center;
+}
+
+.conversations>div {
+	text-align: center;
+	color: #767686;
+	margin-top: 25px;
 }

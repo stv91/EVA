@@ -29,7 +29,7 @@ class Deadline extends ActiveRecord {
 	public static function getDeadlinesByTeacher($user, $degree) {
         $query =   "select distinct d.id, d.subject, d.name, DATE_FORMAT(d.date, '%d/%m/%Y') as date, d.description, s.name as subjectName
 					from deadline d, subject s, subject_course_teacher sct, degree_subject ds
-					where ds.subject = sct.subject and ds.subject = s.code and ds.subject = d.subject
+					where ds.subject = sct.subject and ds.subject = s.code and ds.subject = d.subject and d.date >= NOW()
 					and ds.degree = '$degree' and sct.teacher = $user;";
 
 
