@@ -144,6 +144,11 @@ class NotesController extends Controller {
 
             if(Deadline::checkDeadline($work, $user->code, $degree, $user->isTeacher)) {
                 $mark = Mark::find()->where(['student' => $student, 'work' => $work])->one();
+                if(!isset($mark)){
+                    $mark = new Mark();
+                    $mark->student = $student;
+                    $mark->work = $work;
+                }
                 $mark->value = $newMark;
                 if($mark->save()){
                     return "OK";

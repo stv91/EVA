@@ -37,7 +37,13 @@
 		</ul>
 	</div>
 	<div id="no-deadlines" ng-hide="deadlines.length > 0">
-		<h3>No tienes programada ninguna entrega</h3>
+		<div>
+			<h3>No tienes programada ninguna entrega</h3>
+			<button class="btn btn-deadlines"  ng-click="createDeadline()">
+				<span class="glyphicon glyphicon-plus-sign"></span>
+				Nueva entrega
+			</button>
+		</div>
 	</div>
 	<div ng-class="modalClass" id="modal-confrim" tabindex="-1" role="dialog" aria-labelledby="delete-modal" aria-hidden="true">
 		<div class="modal-dialog">

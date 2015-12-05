@@ -131,12 +131,30 @@ blockquote {
     width: 500px;
 }
 
-#no-deadlines>h3 {
-    color: #767686;
+#no-deadlines>div {
     display: table-cell;
-    font-weight: bold;
-    text-align: center;
     vertical-align: middle;
+    text-align: center;
+}
+
+#no-deadlines h3 {
+    color: #767686;
+    font-weight: bold;
+    
+}
+
+@media (max-width: 500px) {
+    #no-deadlines {
+        margin-left: -200px;
+        width: 400px;
+    }
+}
+
+@media (max-width: 400px) {
+    #no-deadlines {
+        margin-left: -150px;
+        width: 300px;
+    }
 }
 
 .buttons-files {

@@ -14,8 +14,8 @@ class Subject extends ActiveRecord {
 
 	public static function getSubjectsByUser($degree, $user, $isTeacher) {
 		$query = 	"select s.*, ds.course from subject s, degree_subject ds, tuition t, enrollment e
-				where t.student = $user and t.degree like '$degree' and ds.degree = t.degree and e.subject = ds.subject
-				and ds.subject = s.code;";
+					where t.student = e.student  and ds.degree = t.degree and e.subject = ds.subject and ds.subject = s.code
+					and  t.student = $user and t.degree like '$degree';";
 
 		if($isTeacher == 1) {
 			$query = 	"select distinct s.*, ds.course from subject s, subject_course_teacher sct, degree_subject ds

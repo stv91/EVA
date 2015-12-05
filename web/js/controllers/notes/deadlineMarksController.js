@@ -45,15 +45,19 @@ app.controller('deadlineMarksController', function ($scope, $http, $location, $a
 		var span = input.siblings('span');
 		var value = input.val();
 
-		var patt = new RegExp(/^\d{1,2}\.\d{1,2}$/);
-    	if(patt.test(value)) {
+		var patt = new RegExp(/^(\d{1,2}\.\d{1,2})|(\d{1,2})$/);
+    	if(patt.test(value) && parseFloat(value) <= 10 && parseFloat(value) >= 0) {
     		changeValue(name, deadlineID, value, function(data) {
     			if(data == "ERROR"){
     				input.val(currentValue);
     				span.text(currentValue);
-    				alert_mg.show($alert, 'error');
+    				alert_mg.showAlert($alert, 'error');
     			}
     			else {
+    				var patt = new RegExp(/^\d{1,2}$/);
+    				if(patt.test(value)){
+    					value = value+".00";
+    				}
     				input.val(value);
     				span.text(value);
     			}

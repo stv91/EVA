@@ -153,6 +153,17 @@ blockquote {
     width: 500px;
 }
 
+#no-exams>div {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#no-exams h3 {
+    color: #767686;
+    font-weight: bold;
+}
+
 @media (max-width: 500px) {
 	#no-exams {
 		margin-left: -200px;
@@ -167,13 +178,7 @@ blockquote {
 	}
 }
 
-#no-exams>h3 {
-	color: #767686;
-    display: table-cell;
-    font-weight: bold;
-    text-align: center;
-    vertical-align: middle;
-}
+
 
 /*********************************************************************************/
 

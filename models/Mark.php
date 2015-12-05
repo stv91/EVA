@@ -89,14 +89,20 @@ class Mark extends ActiveRecord {
 	}
 
 	public static function getAllDeadlineMarks($id) {
-		$query =   "select part1.*, part2.file, part2.path from 
-					(select m.student, concat_ws(' ', s.name, s.surname) as name, m.value as mark
-					from student s, mark m where s.code = m.student and m.work = $id) as part1
+		$course = Utils::getCurrentCourse();					
+		$query =    "select part1.*, part2.file, part2.path from 
+					(select p1.student, p1.name, case when p2.mark is null then '-' else p2.mark end as mark from
+					(select s.code as student, concat_ws(' ', s.name, s.surname) as name
+					from deadline d, student s, enrollment e
+					where d.subject = e.subject and s.code = e.student and e.course = '$course' and d.id = $id) as p1
+					left join
+					(select m.student, m.value as mark from mark m where m.work = $id) as p2
+					on p1.student = p2.student) as part1
 					left join
 					(select dsub.student, dsub.name as file, concat_ws('/', dsub.deadline, dsub.student, dsub.name)  as path
-					from deadline d, deadline_submit dsub
-					where dsub.deadline = d.id and d.id = $id and
-					dsub.date in (select max(date) from deadline_submit where student = dsub.student)) as part2
+					from deadline_submit dsub
+					where dsub.deadline= $id 
+					and dsub.date in (select max(date) from deadline_submit where student = dsub.student and deadline = dsub.deadline)) as part2
 					on part1.student = part2.student;";
 
 		error_log($query);

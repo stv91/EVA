@@ -50,35 +50,21 @@ class SiteController extends Controller {
 
     public function actionIndex() {
         Yii::$app->params['current_page'] = "index";
-        if(Yii::$app->user->isGuest) 
+        if(Yii::$app->user->isGuest) {
             return $this->redirect(['login']);
+        }
         else {
             if(Yii::$app->request->getIsPost()){
                 $degree = Yii::$app->request->post()["degree"];
                 if($degree){
                     Yii::$app->session["currentDegree"] = $degree;
-                    return $this->render('index');
+                    return $this->redirect(["//materials/index"]);
                 }
             }
-            return $this->render('index');
+            return $this->redirect(["//materials/index"]);
         }
     }
 
-    /*public function actionLogin()
-    {
-        if (!\Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        } else {
-            return $this->render('login', [
-                'model' => $model,
-            ]);
-        }
-    }*/
     public function actionLogin() {
         Yii::$app->params['current_page'] = "login";
         if (!\Yii::$app->user->isGuest) {
@@ -108,40 +94,4 @@ class SiteController extends Controller {
 
         return $this->goHome();
     }
-
-   /* public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-            return $this->refresh();
-        } else {
-            return $this->render('contact', [
-                'model' => $model,
-            ]);
-        }
-    }*/
-
-    /*public function actionMaterials() {
-        Yii::$app->params['current_page'] = "materials";
-
-        if(Yii::$app->request->getIsPost()) {
-            $subject = Yii::$app->request->post('subject');
-            $file = $_FILES['materialFile'];
-            $material = new Material();
-            $material->setData($subject, $file);
-
-            if($material->addMaterial()) {
-                return $this->render('materials', ["materialID" => $material->id]);
-            }
-            else {
-                $message = "No se ha podido guardar el archivo.";
-                if(!empty($material->getErrors())) {
-                    $message = array_values($material->getErrors())[0][0];
-                }
-                return $this->render('error', ['message' =>  $message, 'name' => "Error subiendo el material"]);
-            }
-        }
-        return $this->render('materials');
-    }*/
 }
