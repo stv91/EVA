@@ -7,5 +7,6 @@ return ['current_page' => 'index',
 			'messages' => 'Mensajes',
 			'deadlines' => 'Entregas',
 			'exams' => 'Examenes',
-			'notes' => 'Calificaciones'
+			'notes' => 'Calificaciones',
+			'login' => 'Login'
 		]];
