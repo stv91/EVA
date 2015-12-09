@@ -42,6 +42,8 @@
 		</ul>
 	</div>
 	<div id="no-deadlines" ng-hide="deadlines.length > 0">
-		<h3>No tienes ninguna futura entrega</h3>
+		<div>
+			<h3>No tienes ninguna futura entrega</h3>
+		</div>
 	</div>
 </div>

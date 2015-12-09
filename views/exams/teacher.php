@@ -44,7 +44,7 @@
 			<h3>No tienes programado ningún exámen</h3>
 			<button class="btn btn-questions"  ng-click="editExam(item)">
 				<span class="glyphicon glyphicon-plus-sign"></span>
-				Nueva entrega
+				Nuevo examen
 			</button>
 		</div>
 	</div>

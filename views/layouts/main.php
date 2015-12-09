@@ -44,7 +44,6 @@ AppAsset::register($this);
 				</a>
 			</div>
 			<div class="navbar-collapse" id="collapsable-links">
-				<!--<ul class="hidden-sm nav navbar-nav navbar-links">-->
                 <ul class="hidden-sm nav navbar-nav navbar-links">
 					<li <?php if(Yii::$app->params['current_page'] == 'materials') echo "class=\"active\"" ?>>
                         <a href="/materials/index.html"><?=  Yii::$app->params['pages']['materials']; ?></a>
@@ -69,9 +68,6 @@ AppAsset::register($this);
                       <span class="caret"></span>
                     </a>
                     <ul class="nav dropdown-menu">
-                        <li <?php if(Yii::$app->params['current_page'] == 'index') echo "class=\"active\"" ?>>
-                            <a href="/"><?=  Yii::$app->params['pages']['index']; ?></a>
-                        </li>
     					<li <?php if(Yii::$app->params['current_page'] == 'materials') echo "class=\"active\"" ?>>
                             <a href="/materials/index.html"><?=  Yii::$app->params['pages']['materials']; ?></a>
                         </li>
@@ -140,14 +136,6 @@ AppAsset::register($this);
         <div id="alert-place" ng-hide="hideAlert"></div>
         <?= $content ?>
     </div>
-    <!--</div>-->
-
-    <!--<footer class="footer">
-        <div class="container">
-            <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-            <p class="pull-right"><?= Yii::powered() ?></p>
-        </div>
-    </footer>-->
 
 <?php $this->endBody() ?>
 </body>

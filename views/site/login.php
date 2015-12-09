@@ -10,15 +10,6 @@
 	    <input type="password" class="form-control" id="password" placeholder="Password" ng-model="password">
 	  </div>
 	  <div class="form-group">
-	    <div>
-	      <div class="checkbox">
-	        <label>
-	          <input type="checkbox" ng-model="rememberME"> Recordarme
-	        </label>
-	      </div>
-	    </div>
-	  </div>
-	  <div class="form-group">
 	  	<div class="col-sm-offset-4 col-sm-4 col-xs-12">
 			<button id="submit-btn" type="submit" class="btn btn-default btn-lg col-xs-12">
 		  		Login

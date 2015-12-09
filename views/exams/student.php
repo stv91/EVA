@@ -22,6 +22,8 @@
 		</ul>
 	</div>
 	<div id="no-exams" ng-hide="exams.length > 0">
-		<h3>No tienes programado ningún exámen</h3>
+		<div>
+			<h3>No tienes programado ningún exámen</h3>
+		</div>
 	</div>
 </div>

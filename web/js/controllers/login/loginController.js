@@ -16,7 +16,6 @@ app.controller('loginController', function ($scope, $http, $location, $alert) {
     var data = {
         "LoginForm[email]": $scope.email,
         "LoginForm[password]": $scope.password,
-        "LoginForm[rememberME]": $scope.rememberME
       };
 
     doSubmit($http, 'login.html', data).done(function (data, status, headers, config) {

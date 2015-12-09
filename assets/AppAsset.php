@@ -59,8 +59,8 @@ class AppAsset extends AssetBundle {
 		$regexIter = new \RegexIterator($iter, '/^.+\.css$/i', \RecursiveRegexIterator::GET_MATCH);
 		foreach ($regexIter as $name => $object) {
 			$path = str_replace('\\', '/', Yii::$app->basePath.'/web/');
-			$file = str_replace($path, '', $name);
-			array_push($this->css, str_replace('\\', '/', $file));
+			$file = str_replace($path, '', str_replace('\\', '/', $name));
+			array_push($this->css, $file);
 		}
 		$path = Yii::$app->basePath.'\\web\\css\\'.Yii::$app->params['current_page'];
 		if (file_exists(Yii::$app->utils->stdPath($path.'\\layout.css'))) {
